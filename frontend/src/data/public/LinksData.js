@@ -1,5 +1,5 @@
 const LinksData = {
-    // Navigation principale
+    // Main navigation
     home: {
         key: "home",
         label: "Accueil",
@@ -26,7 +26,7 @@ const LinksData = {
         path: "/community",
     },
 
-    // Authentification
+    // Authentication
     login: {
         key: "login",
         label: "Connexion",
@@ -38,7 +38,39 @@ const LinksData = {
         path: "/register",
     },
 
-    // Informations
+    // Private area (only the dashboard page exists for now)
+    dashboard: {
+        key: "dashboard",
+        label: "Tableau de bord",
+        path: "/dashboard",
+    },
+    budget: {
+        key: "budget",
+        label: "Budget",
+        path: "/budget",
+    },
+    expenses: {
+        key: "expenses",
+        label: "Dépenses",
+        path: "/expenses",
+    },
+    savingGoals: {
+        key: "savingGoals",
+        label: "Objectifs",
+        path: "/saving-goals",
+    },
+    budgetMethods: {
+        key: "budgetMethods",
+        label: "Méthodes budgétaires",
+        path: "/budget-methods",
+    },
+    myAids: {
+        key: "myAids",
+        label: "Aides financières",
+        path: "/my-aids",
+    },
+
+    // Information pages
     about: {
         key: "about",
         label: "À propos",
@@ -55,7 +87,7 @@ const LinksData = {
         path: "/faq",
     },
 
-    // Organismes officiels
+    // Official organizations
     socialRights: {
         key: "socialRights",
         label: "Mes droits Sociaux",
@@ -82,7 +114,7 @@ const LinksData = {
         href: "https://www.service-public.gouv.fr",
     },
 
-    // Informations légales
+    // Legal pages
     legalNotice: {
         key: "legalNotice",
         label: "Mentions légales",

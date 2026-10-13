@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { AuthHeading, AuthPage, AuthReassurance } from "@/components";
+import { AuthHeading, AuthPage, AuthReassurance, Button } from "@/components";
 import { LoginForm, SignupPrompt } from "./sections";
 import LoginData from "./LoginData";
 import "./Login.css";
@@ -17,6 +17,7 @@ function Login() {
                 <AuthHeading title={page.heading.title} subtitle={page.heading.subtitle} />
                 <LoginForm form={page.form} />
                 <SignupPrompt signup={page.signup} />
+                <Button variant="neutral" label={page.demo.label} link={page.demo.path} />
             </div>
 
             <AuthReassurance icon={page.reassurance.icon} text={page.reassurance.text} />

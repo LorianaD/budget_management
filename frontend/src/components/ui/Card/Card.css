@@ -97,14 +97,14 @@
     line-height: 150%;
 }
 
-/* Méthodes budgétaires : icône simple, sans pastille */
+/* Budget methods: plain icon, no badge */
 .card-header--budgetMethods .ui-icon {
     width: 28px;
     height: 28px;
     padding: 0;
 }
 
-/* Organismes : pastille carrée de 40px */
+/* Organizations: 40px square badge */
 .card-header--financialAid .ui-icon {
     width: 40px;
     height: 40px;
@@ -120,7 +120,7 @@
     line-height: 140%;
 }
 
-/* Simulateurs */
+/* Simulators */
 .card--simulator {
     gap: 16px;
     padding: 28px;
@@ -143,7 +143,7 @@
     font-size: 14px;
 }
 
-/* Avantages : contenu centré sur fond blanc */
+/* Benefits: centred content on a white background */
 .card--benefits {
     align-items: center;
     padding: 28px;
@@ -169,7 +169,7 @@
 .card--benefits .card-description {
     font-size: 14px;
 }
-/* ===== Blocs optionnels ===== */
+/* ===== Optional blocks ===== */
 .card__list {
     display: flex;
     flex-direction: column;
@@ -217,7 +217,7 @@
 .card-header__initials--orange { background: #E65100; }
 .card-header__initials--slate { background: var(--grey); }
 
-/* ===== Variantes partagées : carte bordée, padding 28px ===== */
+/* ===== Shared variants: bordered card, 28px padding ===== */
 .card--theme,
 .card--situation,
 .card--tool,
@@ -229,7 +229,7 @@
     border-radius: 12px;
 }
 
-/* Thèmes de conseils : icône, titre, texte, lien */
+/* Advice themes: icon, title, text, link */
 .card--theme {
     gap: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -263,7 +263,7 @@
     font-size: 14px;
 }
 
-/* Situations : icône et titre sur une ligne */
+/* Situations: icon and title on one line */
 .card-header--situation {
     flex-direction: row;
     align-items: center;
@@ -281,7 +281,7 @@
     font-size: 17px;
 }
 
-/* Outils : pastille colorée, bouton en bas de carte */
+/* Tools: coloured badge, button at the bottom */
 .card--tool {
     gap: 16px;
 }
@@ -301,7 +301,7 @@
     font-size: 13px;
 }
 
-/* Aides : badge de l'organisme en haut à droite */
+/* Aids: organization badge at the top right */
 .card-header--aid {
     align-self: stretch;
     align-items: stretch;
@@ -321,7 +321,7 @@
     flex: 1;
 }
 
-/* Catégories d'aides : liste à puces et bouton */
+/* Aid categories: bullet list and button */
 .card--aidCategory {
     gap: 24px;
     padding: 28px;
@@ -333,7 +333,7 @@
     flex: 1;
 }
 
-/* Organismes : contenu centré, initiale en pastille */
+/* Organizations: centred content, initial in a badge */
 .card--organization {
     align-items: center;
     text-align: center;
@@ -353,7 +353,7 @@
     align-content: flex-start;
 }
 
-/* Thèmes de la communauté : contenu centré */
+/* Community themes: centred content */
 .card--communityTheme {
     align-items: center;
     text-align: center;
@@ -369,7 +369,7 @@
     font-size: 13px;
 }
 
-/* Valeurs : carte blanche ombrée, pastille colorée centrée */
+/* Values: white shadowed card, centred coloured badge */
 .card--value {
     align-items: center;
     padding: 32px;
@@ -391,4 +391,62 @@
 
 .card--value .card-description {
     font-size: 13px;
+}
+
+/* ===== Private area ===== */
+/* Optional coloured left edge (item.tone) */
+.card--tone-green { border-left: 6px solid #2E7D32; }
+.card--tone-blue { border-left: 6px solid var(--blue); }
+.card--tone-orange { border-left: 6px solid var(--orange); }
+
+/* Suggested aid (dashboard): bordered tile, title and status badge on one line */
+.card--suggestedAid {
+    gap: 12px;
+    padding: 20px;
+    border-top: 1px solid #E2E8F0;
+    border-right: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+.card-header--suggestedAid .card-header__heading {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.card-header--suggestedAid,
+.card-header--recommendedMethod {
+    width: 100%;
+}
+
+.card-header--suggestedAid .card-header__title {
+    font-size: 16px;
+}
+
+.card--suggestedAid .card-description,
+.card--recommendedMethod .card-description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Recommended budget method (dashboard): pale blue box, full-width button */
+.card--recommendedMethod {
+    gap: 12px;
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--pale-blue);
+}
+
+.card-header--recommendedMethod .card-header__title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--blue);
+}
+
+.card--recommendedMethod .button {
+    width: 100%;
 }

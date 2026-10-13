@@ -24,5 +24,9 @@ export * from './Checkbox';
 export * from './Switch';
 export * from './AuthVisual';
 export * from './AuthPage';
+export * from './MaskIcon';
+export * from './AsyncState';
+// Charts are NOT re-exported here: import them from "@/components/ui/charts"
+// so Chart.js stays in the lazily loaded private area chunk.
 
 export * from './sections';

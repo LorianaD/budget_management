@@ -74,3 +74,9 @@
     background: #2E7D32;
     color: var(--white);
 }
+
+/* Pale blue secondary action (e.g. "Voir l'analyse détaillée") */
+.button--soft {
+    background: #E3F2FD;
+    color: var(--blue);
+}

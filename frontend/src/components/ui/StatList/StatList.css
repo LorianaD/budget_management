@@ -4,7 +4,7 @@
     gap: 24px 48px;
 }
 
-/* Valeur au-dessus du libellé (chiffres clés sur fond bleu) */
+/* Value above the label (key figures on a blue background) */
 .stat-list__item {
     display: flex;
     flex-direction: column-reverse;
@@ -43,7 +43,7 @@
     color: rgba(255, 255, 255, 0.85);
 }
 
-/* Tuiles : libellé au-dessus de la valeur, grille 2 x 2 */
+/* Tiles: label above the value, 2 x 2 grid */
 .stat-list--tiles {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -81,7 +81,93 @@
     color: var(--blue);
 }
 
-/* Orange assombri : #F57C00 n'atteint pas le contraste minimal sur fond gris */
+/* Darkened orange: #F57C00 misses the minimum contrast on grey */
 .stat-list__item--orange .stat-list__value {
     color: #B45309;
+}
+
+/* ---------- "cards" variant: private area KPI cards ---------- */
+.stat-list--cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.stat-list--cards .stat-list__item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.stat-list--cards .stat-list__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.stat-list--cards .stat-list__value {
+    font-size: 32px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #1A202C;
+}
+
+.stat-list__icon {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--white);
+}
+
+.stat-list__icon--blue { background: var(--blue); }
+.stat-list__icon--green { background: #2E7D32; }
+.stat-list__icon--orange { background: var(--orange); }
+
+.stat-list__value--positive { color: #2E7D32; }
+.stat-list__value--negative { color: #C62828; }
+
+.stat-list__detail {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.stat-list__detail--neutral {
+    font-weight: 400;
+}
+
+/* Trend glyphs are decorative: the empty alt text keeps them silent */
+.stat-list__detail--up { color: #2E7D32; }
+.stat-list__detail--up::before { content: "▲ " / ""; }
+
+.stat-list__detail--down { color: #C62828; }
+.stat-list__detail--down::before { content: "▼ " / ""; }
+
+.stat-list__detail--warning { color: #B45309; }
+.stat-list__detail--warning::before { content: "● " / ""; }
+
+@media screen and (max-width: 1200px) {
+    .stat-list--cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stat-list--cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .stat-list--cards .stat-list__value {
+        font-size: 28px;
+    }
 }

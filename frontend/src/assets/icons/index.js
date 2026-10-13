@@ -70,6 +70,7 @@ import targetOrange from "./target-orange.svg";
 export * from "./social";
 export * from "./organizations";
 export * from "./auth";
+export * from "./private";
 
 export {
     house,

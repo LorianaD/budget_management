@@ -24,12 +24,12 @@
     color: var(--white);
 }
 
-/* Fond gris clair pour alterner les sections */
+/* Light grey background to alternate sections */
 .section-container--muted {
     background: #F5F7FA;
 }
 
-/* Appel à l'action dans un encadré gris (accueil) */
+/* Call to action in a grey box (home page) */
 .section-container--cta-boxed {
     width: min(1000px, calc(100% - 32px));
     margin: 120px auto;
@@ -81,7 +81,7 @@
 .section-container__description,
 .section-container__description--default {
     line-height: 160%; /* 28.8px */
-    text-align: left; /* le texte justifié crée de grands espaces sur mobile */
+    text-align: left; /* justified text creates large gaps on mobile */
 }
 
 .section-container__description--center {
@@ -101,7 +101,7 @@
     font-size: 18px;
 }
 
-/* Placées après les règles de base pour les surcharger (même spécificité) */
+/* Placed after the base rules to override them (same specificity) */
 .section-container__title--cta-boxed {
     text-align: center;
     font-size: clamp(30px, 4vw, 48px);
@@ -136,7 +136,7 @@
     font-size: 18px;
 }
 
-/* Le contenu ajouté sous l'en-tête (headerExtra) est séparé par un espace plus grand */
+/* Content added under the header (headerExtra) gets a larger gap */
 .section-container--community .section-container__header {
     gap: 24px;
 }
@@ -161,8 +161,8 @@
     max-width: 700px;
 }
 
-/* ===== Mise en page en deux colonnes : texte + illustration =====
-   Enfants attendus : .section-container__content et .section-container__media */
+/* ===== Two-column layout: text + illustration =====
+   Expected children: .section-container__content and .section-container__media */
 .section-container--split,
 .section-container--split-reverse,
 .section-container--highlight {
@@ -212,7 +212,7 @@
     grid-column: 1;
 }
 
-/* Encadré bleu clair (recommandations) */
+/* Light blue box (recommendations) */
 .section-container--highlight {
     width: min(1200px, calc(100% - 32px));
     margin: 80px auto;
@@ -226,7 +226,7 @@
     border-radius: 0;
 }
 
-/* Bandeau d’information importante */
+/* Important information banner */
 .section-container--notice {
     gap: 40px;
     background: #FFF8E1;
@@ -284,7 +284,7 @@
         padding: 48px 16px;
     }
 }
-/* Pastille « i » décorative au-dessus du titre de l'encart d'information */
+/* Decorative "i" badge above the information box title */
 .section-container--notice .section-container__header::before {
     content: "i";
     display: flex;
@@ -306,4 +306,64 @@
 
 .section-container--highlight .section-container__description {
     text-align: left;
+}
+
+/* ===== Private area widgets ===== */
+/* White panel holding a dashboard widget (title, optional subtitle, content) */
+.section-container--panel,
+.section-container--tip {
+    align-items: stretch;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.section-container--panel {
+    background: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Highlighted advice: pale yellow with an orange edge */
+.section-container--tip {
+    gap: 12px;
+    padding: 20px;
+    border-left: 4px solid var(--orange);
+    background: #FFFBEB;
+}
+
+.section-container__header--panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.section-container__title--panel {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: normal;
+    color: #1A202C;
+}
+
+.section-container__description--panel {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Titles may start with a decorative icon */
+.section-container__title--panel,
+.section-container__title--panel-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Small label title (e.g. "Méthode recommandée") */
+.section-container__title--panel-label {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: normal;
+    color: var(--grey);
 }

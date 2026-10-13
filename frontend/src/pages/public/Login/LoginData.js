@@ -64,6 +64,12 @@ const LoginData = {
         path: LinksData.register.path,
     },
 
+    // Opens the demo private area directly: no authentication is simulated
+    demo: {
+        label: "Découvrir le tableau de bord de démonstration",
+        path: LinksData.dashboard.path,
+    },
+
     reassurance: {
         icon: lockSmall,
         text: "Connexion sécurisée — Données protégées",

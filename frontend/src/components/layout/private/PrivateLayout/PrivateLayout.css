@@ -1,0 +1,36 @@
+.private-layout {
+    display: flex;
+    min-height: 100dvh;
+    background: #F5F7FA;
+}
+
+.private-layout__main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.private-layout__demo-notice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--pale-blue);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--blue);
+}
+
+.private-layout__content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+    .private-layout {
+        flex-direction: column;
+    }
+}

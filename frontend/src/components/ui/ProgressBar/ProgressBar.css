@@ -84,3 +84,54 @@
         transition: none;
     }
 }
+
+/* Category variant: icon + name on the left, amounts + rate badge on the right */
+.progress-bar--category .progress-bar__label,
+.progress-bar--category .progress-bar__value {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.progress-bar--category .progress-bar__label {
+    gap: 12px;
+    font-weight: 600;
+}
+
+.progress-bar--category .progress-bar__value {
+    font-weight: 500;
+    color: var(--grey);
+}
+
+.progress-bar--category .progress-bar__track,
+.progress-bar--goal .progress-bar__track {
+    border-radius: 100px;
+    background: #F5F7FA;
+}
+
+.progress-bar--category .progress-bar__fill,
+.progress-bar--goal .progress-bar__fill {
+    border-radius: 100px;
+}
+
+/* Goal variant: thin bar on top, rate and deadline below */
+.progress-bar--goal {
+    flex-direction: column-reverse;
+}
+
+.progress-bar--goal .progress-bar__track {
+    height: 8px;
+}
+
+.progress-bar--goal .progress-bar__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2E7D32;
+}
+
+.progress-bar--goal .progress-bar__value {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--grey);
+}

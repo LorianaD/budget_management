@@ -4,11 +4,14 @@ import { Icon } from "../Icon";
 import { TextLink } from "../TextLink";
 import './Card.css';
 
-// Carte générique pilotée par les données. Tous les blocs sont optionnels :
-// icon | initials, badge, description, list (puces), tags, btn, link.
+// Generic data-driven card. Every block is optional:
+// icon | initials, badge, description, list (bullets), tags, btn, link.
+// tone: optional coloured left edge (green, blue, orange).
 function Card({ item }) {
+    const toneClass = item.tone ? `card--tone-${item.tone}` : "";
+
     return (
-        <article id={item.id} className={`card card--${item.variant}`}>
+        <article id={item.id} className={`card card--${item.variant} ${toneClass}`}>
             <div className={`card-header card-header--${item.variant}`}>
                 {item.icon && (
                     <Icon
