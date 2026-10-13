@@ -1,0 +1,29 @@
+.section-eyebrow {
+    display: flex;
+    padding: 6px 12px;
+    align-items: flex-start;
+    border-radius: 6px;
+    width: fit-content;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.section-eyebrow--success {
+    background: #D1FAE5;
+    color: #2E7D32;
+}
+
+.section-eyebrow--warning {
+    background: #FFF3E0;
+    color: #B45309;
+}
+
+.section-eyebrow--info {
+    background: #E3F2FD;
+    color: #1565C0;
+}
+/* Sur fond bleu */
+.section-eyebrow--light {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}

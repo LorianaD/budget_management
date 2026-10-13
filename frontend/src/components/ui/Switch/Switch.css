@@ -1,0 +1,66 @@
+.switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.switch__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.switch__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A202C;
+    cursor: pointer;
+}
+
+.switch__description {
+    font-size: 12px;
+}
+
+/* 44 x 24px track and white knob drawn in CSS */
+.switch__input {
+    appearance: none;
+    position: relative;
+    flex-shrink: 0;
+    width: 44px;
+    height: 24px;
+    margin: 0;
+    border-radius: 12px;
+    background: #E2E8F0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.switch__input::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--white);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.switch__input:checked {
+    background: var(--blue);
+}
+
+.switch__input:checked::before {
+    transform: translateX(20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .switch__input,
+    .switch__input::before {
+        transition: none;
+    }
+}

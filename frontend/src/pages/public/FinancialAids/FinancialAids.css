@@ -1,0 +1,10 @@
+/* Encart « Information importante » */
+.section-notice__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 680px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #78350F;
+}

@@ -1,0 +1,94 @@
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 28px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+}
+
+.testimonial-card__rating {
+    display: flex;
+    gap: 4px;
+}
+
+.testimonial-card__star {
+    width: 14px;
+    height: 14px;
+}
+
+.testimonial-card__quote {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1A202C;
+}
+
+.testimonial-card__quote p::before { content: "« "; }
+.testimonial-card__quote p::after { content: " »"; }
+
+.testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testimonial-card__author-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card__name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1A202C;
+}
+
+.testimonial-card__profile {
+    font-size: 12px;
+}
+
+/* Variante communauté : citation en italique, grand guillemet décoratif */
+.testimonial-card--community {
+    position: relative;
+    padding: 32px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.03);
+}
+
+.testimonial-card--community .testimonial-card__star {
+    width: 16px;
+    height: 16px;
+}
+
+.testimonial-card--community .testimonial-card__quote {
+    position: relative;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.testimonial-card--community .testimonial-card__quote p::before,
+.testimonial-card--community .testimonial-card__quote p::after {
+    content: none;
+}
+
+/* Le texte passe au-dessus du guillemet décoratif */
+.testimonial-card--community .testimonial-card__quote p {
+    position: relative;
+}
+
+.testimonial-card--community .testimonial-card__quote::before {
+    content: "\201C";
+    position: absolute;
+    top: -28px;
+    left: -12px;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    color: #E3F2FD;
+}
+
+.testimonial-card--community .testimonial-card__name {
+    font-size: 14px;
+    font-weight: 700;
+}

@@ -1,0 +1,86 @@
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.progress-bar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.progress-bar__label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.progress-bar__value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A202C;
+    white-space: nowrap;
+}
+
+.progress-bar__track {
+    height: 10px;
+    border-radius: 6px;
+    background: #D9E2EC;
+    overflow: hidden;
+}
+
+.progress-bar__fill {
+    width: var(--progress-value);
+    height: 100%;
+    border-radius: 6px;
+    background: var(--progress-color);
+    transition: width 0.3s ease;
+}
+
+/* Summary variant: strong label, discreet value, thicker track */
+.progress-bar--summary .progress-bar__label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.progress-bar--summary .progress-bar__value {
+    font-size: 13px;
+    font-weight: 400;
+    color: #718096;
+}
+
+.progress-bar--summary .progress-bar__track {
+    height: 12px;
+    background: #F5F7FA;
+}
+
+/* Steps variant: bar on top, blue label below */
+.progress-bar--steps {
+    flex-direction: column-reverse;
+    gap: 12px;
+}
+
+.progress-bar--steps .progress-bar__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.progress-bar--steps .progress-bar__track {
+    height: 8px;
+    border-radius: 8px;
+    background: #E2E8F0;
+}
+
+.progress-bar--steps .progress-bar__fill {
+    border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar__fill {
+        transition: none;
+    }
+}

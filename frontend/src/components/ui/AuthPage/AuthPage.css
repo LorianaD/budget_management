@@ -1,0 +1,117 @@
+.auth-page {
+    display: grid;
+    grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+    min-height: calc(100dvh - 112px);
+    background: var(--white);
+}
+
+.auth-page__form-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 64px;
+    background: var(--white);
+}
+
+.auth-page__form-panel--spaced {
+    justify-content: space-between;
+    gap: 32px;
+}
+
+/* ---------- Heading ---------- */
+.auth-page__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.auth-page__title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: normal;
+    color: #1A202C;
+}
+
+/* Focus is moved here programmatically: the announcement is enough, no outline */
+.auth-page__title:focus {
+    outline: none;
+}
+
+.auth-page__subtitle {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.auth-page__heading--step {
+    gap: 12px;
+}
+
+.auth-page__heading--step .auth-page__subtitle {
+    font-size: 14px;
+}
+
+/* ---------- Form ---------- */
+.auth-page__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.auth-page__form .button {
+    min-height: 52px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.auth-page__form > .button {
+    width: 100%;
+}
+
+/* Also used by the register success screen, outside the shell */
+.auth-page__notice {
+    padding: 12px 16px;
+    border-left: 4px solid var(--orange);
+    border-radius: 8px;
+    background: #FFF8E1;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #78350F;
+}
+
+.auth-page__reassurance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748B;
+}
+
+.auth-page__reassurance img {
+    width: 14px;
+    height: 14px;
+}
+
+@media screen and (max-width: 1024px) {
+    .auth-page {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .auth-page__form-panel {
+        width: 100%;
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 48px 32px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .auth-page__form-panel {
+        padding: 32px 16px;
+    }
+
+    .auth-page__title {
+        font-size: 26px;
+    }
+}

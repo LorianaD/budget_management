@@ -1,0 +1,394 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 32px;
+    width: 100%;
+    gap: 20px;
+    border-radius: 16px;
+
+    background: #FFF;
+}
+
+.card--features {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.04);
+    max-height: 300px;
+}
+
+.card--budgetMethods {
+    border: 1px solid #D9E2EC;
+    gap: 24px;
+    max-height: 300px;
+}
+
+.card--financialAid {
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #D9E2EC;
+    width: 100%;
+}
+
+.card--financialAid:last-child {
+    grid-column: 1 / -1;
+}
+
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-direction: column;
+}
+
+.card-header--budgetMethods {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-header--financialAid {
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-header__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 64px;
+    height: 64px;
+
+    padding: 10px;
+
+    border-radius: 32px;
+
+    aspect-ratio: 1/1;
+}
+
+.card-header__icon--features {
+    background: #EBF2FF;
+}
+
+.card-header__icon--financialAid {
+    background-color: #EBF2FF;
+    border-radius: 8px;
+}
+
+.card-header__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-header__title {
+    color: #1A202C;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.card-description {
+    font-size: 15px;
+    line-height: 150%;
+}
+
+/* Méthodes budgétaires : icône simple, sans pastille */
+.card-header--budgetMethods .ui-icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+
+/* Organismes : pastille carrée de 40px */
+.card-header--financialAid .ui-icon {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+.card--financialAid .card-header__title {
+    font-size: 16px;
+}
+
+.card--financialAid .card-description {
+    font-size: 14px;
+    line-height: 140%;
+}
+
+/* Simulateurs */
+.card--simulator {
+    gap: 16px;
+    padding: 28px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+.card--simulator .ui-icon {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+}
+
+.card--simulator .card-header__title {
+    font-size: 18px;
+}
+
+.card--simulator .card-description {
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Avantages : contenu centré sur fond blanc */
+.card--benefits {
+    align-items: center;
+    padding: 28px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.card-header--benefits {
+    align-items: center;
+    gap: 20px;
+}
+
+.card-header--benefits .ui-icon {
+    width: 56px;
+    height: 56px;
+    padding: 16px;
+}
+
+.card--benefits .card-header__title {
+    font-size: 17px;
+}
+
+.card--benefits .card-description {
+    font-size: 14px;
+}
+/* ===== Blocs optionnels ===== */
+.card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: disc;
+    padding-left: 16px;
+    font-size: 13px;
+    line-height: 150%;
+}
+
+.card__list-item::marker {
+    color: var(--blue);
+}
+
+.card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.card__tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #F5F7FA;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.card-header__initials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.card-header__initials--blue { background: var(--blue); }
+.card-header__initials--green { background: #2E7D32; }
+.card-header__initials--purple { background: var(--violet); }
+.card-header__initials--orange { background: #E65100; }
+.card-header__initials--slate { background: var(--grey); }
+
+/* ===== Variantes partagées : carte bordée, padding 28px ===== */
+.card--theme,
+.card--situation,
+.card--tool,
+.card--aid,
+.card--organization,
+.card--communityTheme {
+    padding: 28px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+/* Thèmes de conseils : icône, titre, texte, lien */
+.card--theme {
+    gap: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card--theme .ui-icon,
+.card--aidCategory .ui-icon,
+.card--communityTheme .ui-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 0;
+}
+
+.card-header--theme,
+.card-header--aidCategory {
+    gap: 16px;
+}
+
+.card--theme .card-header__title,
+.card--aid .card-header__title,
+.card--aidCategory .card-header__title,
+.card--communityTheme .card-header__title,
+.card--value .card-header__title {
+    font-size: 18px;
+}
+
+.card--theme .card-description,
+.card--situation .card-description,
+.card--aid .card-description {
+    font-size: 14px;
+}
+
+/* Situations : icône et titre sur une ligne */
+.card-header--situation {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.card--situation .ui-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 0;
+}
+
+.card--situation .card-header__title {
+    font-size: 17px;
+}
+
+/* Outils : pastille colorée, bouton en bas de carte */
+.card--tool {
+    gap: 16px;
+}
+
+.card--tool .ui-icon {
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+}
+
+.card--tool .card-header__title {
+    font-size: 16px;
+}
+
+.card--tool .card-description {
+    flex: 1;
+    font-size: 13px;
+}
+
+/* Aides : badge de l'organisme en haut à droite */
+.card-header--aid {
+    align-self: stretch;
+    align-items: stretch;
+}
+
+.card-header--aid .card-header__heading {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.card-header--aid .badge {
+    align-self: flex-end;
+}
+
+.card--aid .card-description {
+    flex: 1;
+}
+
+/* Catégories d'aides : liste à puces et bouton */
+.card--aidCategory {
+    gap: 24px;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card--aidCategory .card__list {
+    flex: 1;
+}
+
+/* Organismes : contenu centré, initiale en pastille */
+.card--organization {
+    align-items: center;
+    text-align: center;
+}
+
+.card-header--organization {
+    align-items: center;
+    gap: 20px;
+}
+
+.card--organization .card-header__title {
+    font-size: 16px;
+}
+
+.card--organization .card__tags {
+    flex: 1;
+    align-content: flex-start;
+}
+
+/* Thèmes de la communauté : contenu centré */
+.card--communityTheme {
+    align-items: center;
+    text-align: center;
+}
+
+.card-header--communityTheme {
+    align-items: center;
+    gap: 20px;
+}
+
+.card--communityTheme .card-description {
+    flex: 1;
+    font-size: 13px;
+}
+
+/* Valeurs : carte blanche ombrée, pastille colorée centrée */
+.card--value {
+    align-items: center;
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    text-align: center;
+}
+
+.card-header--value {
+    align-items: center;
+    gap: 20px;
+}
+
+.card--value .ui-icon {
+    width: 56px;
+    height: 56px;
+    padding: 16px;
+}
+
+.card--value .card-description {
+    font-size: 13px;
+}

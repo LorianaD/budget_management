@@ -1,0 +1,12 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geist:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "./fonts.css";
+
+/* Variables */
+@import "./variables.css";
+
+/* Reset */
+@import "./reset.css";
+
+/* Global */
+@import "./global.css";

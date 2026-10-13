@@ -1,0 +1,8 @@
+/* Nombre de membres par thème : pastille verte */
+.card--communityTheme .card__tag {
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--green);
+    font-size: 11px;
+    color: #2E7D32;
+}

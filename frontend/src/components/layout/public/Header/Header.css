@@ -1,0 +1,203 @@
+.public-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 88px;
+    padding: 0 80px;
+    align-items: center;
+    background: #FFF;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    gap: 50px;
+}
+
+.public-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #1565C0;
+}
+
+.public-header__brand-logo {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #1565C0;
+}
+
+.public-header__brand-logo-img {
+    width: 24px;
+    height: 24px;
+}
+
+.public-header__brand-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: normal;
+    white-space: nowrap;
+}
+
+.public-header__right-side {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.public-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.public-header__nav-link {
+    display: block;
+    padding: 14px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: #1A202C;
+}
+
+.public-header__nav-link--active {
+    background: #EEF3FF;
+    color: var(--blue);
+}
+
+.public-header__nav-link:hover {
+    text-decoration: none;
+    background: #EEF3FF;
+    color: var(--blue);
+}
+
+/* Entre 901px et 1280px : on resserre pour que tout tienne sur une ligne */
+@media screen and (min-width: 901px) and (max-width: 1280px) {
+    .public-header {
+        padding: 0 32px;
+        gap: 24px;
+    }
+
+    .public-header__right-side {
+        gap: 24px;
+    }
+
+    .public-header__nav {
+        gap: 4px;
+    }
+
+    .public-header__auth {
+        gap: 12px;
+    }
+}
+
+.public-header__auth {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+
+/* Hamburger masqué sur desktop */
+.public-header__menu-toggle {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .public-header {
+        position: relative;
+        height: 72px;
+        padding: 0 20px;
+        z-index: 100;
+    }
+
+    .public-header__brand-title {
+        font-size: 18px;
+    }
+
+    /* Bouton hamburger */
+    .public-header__menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .public-header__menu-toggle span {
+        width: 24px;
+        height: 2px;
+        border-radius: 2px;
+        background: #1565C0;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    /* Animation hamburger vers croix */
+    .public-header__menu-toggle--open span:first-child {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .public-header__menu-toggle--open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .public-header__menu-toggle--open span:last-child {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Menu déroulant */
+    .public-header__right-side {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 24px;
+        padding: 24px 20px;
+        background: #FFF;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        max-height: calc(100dvh - 72px);
+        overflow-y: auto;
+    }
+
+    .public-header__right-side--open {
+        display: flex;
+    }
+
+    /* Navigation verticale */
+    .public-header__nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .public-header__nav-link {
+        display: block;
+        padding: 14px 12px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+
+    /* Authentification */
+    .public-header__auth {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding-top: 20px;
+        border-top: 1px solid #E5E7EB;
+    }
+
+    .public-header__auth .button {
+        width: 100%;
+    }
+}

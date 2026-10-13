@@ -1,0 +1,33 @@
+:root {
+  /* Colors */
+  --blue: #1565C0;
+  --pale-blue: #EBF2FF;
+
+  --dark-green: #00796B;
+  --green: #D1FAE5;
+  --pale-green: #2E7D321A;
+
+  --red: #E53935;
+  --pale-red: #E539351A;
+
+  --orange: #F9A825;
+  --pale-orange: #F57C001A;
+
+  --violet: #6A1B9A;
+  --pale-violet: #6A1B9A1A;
+
+  --pink: #E91E63;
+  --pale-pink: #E91E631A;
+
+  --grey: #4A5568;
+
+  --white: #FFFFFF;
+  --black: #000000;
+
+  /* FONT */
+  --text: Geist;
+}
+
+@media (prefers-color-scheme: dark) {
+
+}

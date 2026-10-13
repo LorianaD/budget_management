@@ -1,0 +1,184 @@
+.auth-visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    padding: 64px;
+    color: var(--white);
+}
+
+.auth-visual--blue {
+    background: linear-gradient(180deg, #1565C0 0%, #0D47A1 100%);
+}
+
+.auth-visual--light {
+    background: linear-gradient(180deg, #F5F7FA 0%, #E3F2FD 100%);
+    color: var(--grey);
+}
+
+.auth-visual--green {
+    background: linear-gradient(180deg, #2E7D32 0%, #1B5E20 100%);
+}
+
+.auth-visual__image {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 3 / 2;
+    border-radius: 24px;
+    object-fit: cover;
+}
+
+.auth-visual__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-visual__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+}
+
+.auth-visual__title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: normal;
+    color: var(--white);
+}
+
+.auth-visual--light .auth-visual__title {
+    color: #1A202C;
+}
+
+.auth-visual__description {
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.auth-visual--light .auth-visual__description {
+    color: var(--grey);
+}
+
+/* Benefit chips: two-column grid */
+.auth-visual__chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 460px;
+}
+
+.auth-visual__chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.auth-visual__chip-icon,
+.auth-visual__checklist-icon {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--white);
+}
+
+.auth-visual__chip-icon img {
+    width: 12px;
+    height: 12px;
+}
+
+/* Profile badges */
+.auth-visual__badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.auth-visual__badges .badge {
+    padding: 8px 16px;
+    font-size: 12px;
+}
+
+/* Vertical checklist */
+.auth-visual__checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-visual__checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.auth-visual__checklist-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.auth-visual__checklist-icon img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Login layout: larger illustration, bordered chips */
+.auth-visual--login .auth-visual__image {
+    max-width: 520px;
+    aspect-ratio: 13 / 9;
+}
+
+.auth-visual--login .auth-visual__content {
+    gap: 48px;
+}
+
+.auth-visual--login .auth-visual__title {
+    font-size: 28px;
+}
+
+.auth-visual--login .auth-visual__chip {
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+@media screen and (max-width: 1024px) {
+    .auth-visual {
+        gap: 32px;
+        padding: 48px 32px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .auth-visual {
+        padding: 40px 16px;
+    }
+
+    .auth-visual__title,
+    .auth-visual--login .auth-visual__title {
+        font-size: 22px;
+    }
+
+    .auth-visual__chips {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

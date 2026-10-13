@@ -1,0 +1,50 @@
+.trust-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 24px;
+}
+
+.trust-indicators__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.trust-indicators__icon {
+    width: 16px;
+    height: 16px;
+}
+
+.trust-indicators__label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Centré, texte foncé (CTA final de l'accueil) */
+.trust-indicators--center {
+    justify-content: center;
+    gap: 12px 32px;
+}
+
+.trust-indicators--center .trust-indicators__label {
+    color: #1A202C;
+}
+
+/* Sur fond bleu (CTA des outils) */
+.trust-indicators--light {
+    justify-content: center;
+    opacity: 0.85;
+}
+
+.trust-indicators--light .trust-indicators__icon {
+    width: 14px;
+    height: 14px;
+    filter: brightness(0) invert(1);
+}
+
+.trust-indicators--light .trust-indicators__label {
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 400;
+}

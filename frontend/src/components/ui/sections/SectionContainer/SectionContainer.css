@@ -1,0 +1,309 @@
+.section-container,
+.section-container--default {
+    display: flex;
+    width:  100%;
+    padding: 100px 80px;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+}
+
+.section-container--community {
+    flex-direction: row;
+    align-items: flex-start;
+
+    background: linear-gradient(90deg, #1565C0 0%, #0D47A1 100%);
+    color: var(--white);
+
+    gap: 64px;
+}
+
+.section-container--cta {
+    gap: 40px;
+    background: var(--blue);
+    color: var(--white);
+}
+
+/* Fond gris clair pour alterner les sections */
+.section-container--muted {
+    background: #F5F7FA;
+}
+
+/* Appel à l'action dans un encadré gris (accueil) */
+.section-container--cta-boxed {
+    width: min(1000px, calc(100% - 32px));
+    margin: 120px auto;
+    padding: 80px;
+    gap: 40px;
+    border-radius: 32px;
+    background: #F5F7FA;
+}
+
+.section-container__header,
+.section-container__header--default {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.section-container__header--center {
+    align-items: center;
+}
+
+.section-container__header--right {
+    align-items: flex-end;
+}
+
+.section-container__title,
+.section-container__title--default {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    line-height: 120%; /* 48px */
+    letter-spacing: normal;
+    color: #1A202C;
+}
+
+.section-container__title--center {
+    text-align: center;
+}
+
+.section-container__title--right {
+    text-align: right;
+}
+
+.section-container__title--community,
+.section-container__title--cta {
+    color: var(--white);
+}
+
+.section-container__description,
+.section-container__description--default {
+    line-height: 160%; /* 28.8px */
+    text-align: left; /* le texte justifié crée de grands espaces sur mobile */
+}
+
+.section-container__description--center {
+    text-align: center;
+}
+
+.section-container__description--right {
+    text-align: right;
+}
+
+.section-container__description--cta {
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+.section-container__description--community {
+    font-size: 18px;
+}
+
+/* Placées après les règles de base pour les surcharger (même spécificité) */
+.section-container__title--cta-boxed {
+    text-align: center;
+    font-size: clamp(30px, 4vw, 48px);
+}
+
+.section-container__description--cta-boxed {
+    max-width: 600px;
+    font-size: 20px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.section-container__title--cta,
+.section-container__description--cta {
+    text-align: center;
+}
+
+.section-container__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.section-container__actions--cta,
+.section-container__actions--cta-boxed {
+    justify-content: center;
+}
+
+.section-container__header--center .section-container__description--cta {
+    max-width: 540px;
+    font-size: 18px;
+}
+
+/* Le contenu ajouté sous l'en-tête (headerExtra) est séparé par un espace plus grand */
+.section-container--community .section-container__header {
+    gap: 24px;
+}
+
+.section-container--community .stat-list,
+.section-container--community .stat-list-block {
+    margin: 16px 0;
+}
+
+.section-container--community .stat-list-block .stat-list {
+    margin: 0;
+}
+
+
+.section-container__note {
+    font-size: 13px;
+    font-style: italic;
+    color: #5A6678;
+}
+
+.section-container__header--center .section-container__description {
+    max-width: 700px;
+}
+
+/* ===== Mise en page en deux colonnes : texte + illustration =====
+   Enfants attendus : .section-container__content et .section-container__media */
+.section-container--split,
+.section-container--split-reverse,
+.section-container--highlight {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    grid-template-rows: auto 1fr;
+    column-gap: 80px;
+    row-gap: 40px;
+    align-items: start;
+}
+
+.section-container--split > .section-container__header,
+.section-container--highlight > .section-container__header {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.section-container--split > .section-container__content,
+.section-container--highlight > .section-container__content {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.section-container__media {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+}
+
+.section-container__media img {
+    border-radius: 20px;
+}
+
+.section-container--split-reverse {
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+}
+
+.section-container--split-reverse > .section-container__header,
+.section-container--split-reverse > .section-container__content {
+    grid-column: 2;
+}
+
+.section-container--split-reverse > .section-container__header { grid-row: 1; }
+.section-container--split-reverse > .section-container__content { grid-row: 2; }
+
+.section-container--split-reverse > .section-container__media {
+    grid-column: 1;
+}
+
+/* Encadré bleu clair (recommandations) */
+.section-container--highlight {
+    width: min(1200px, calc(100% - 32px));
+    margin: 80px auto;
+    padding: 80px;
+    border-radius: 32px;
+    background: #E3F2FD;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+}
+
+.section-container--highlight .section-container__media img {
+    border-radius: 0;
+}
+
+/* Bandeau d’information importante */
+.section-container--notice {
+    gap: 40px;
+    background: #FFF8E1;
+    text-align: center;
+}
+
+.section-container__title--notice {
+    font-size: 28px;
+    color: #92400E;
+}
+
+.section-container__description--notice {
+    font-weight: 600;
+    color: #92400E;
+}
+
+
+@media screen and (max-width: 900px) {
+    .section-container--split,
+    .section-container--split-reverse,
+    .section-container--highlight {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .section-container__media {
+        align-self: center;
+        max-width: 460px;
+    }
+
+    .section-container--highlight {
+        margin: 48px auto;
+        padding: 48px 24px;
+    }
+
+    .section-container {
+        padding: 50px 40px;
+    }
+
+    .section-container--community {
+        flex-direction: column;
+        gap: 64px;
+    }
+
+    .section-container--cta-boxed {
+        margin: 60px auto;
+        padding: 48px 24px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .section-container {
+        padding: 48px 16px;
+    }
+}
+/* Pastille « i » décorative au-dessus du titre de l'encart d'information */
+.section-container--notice .section-container__header::before {
+    content: "i";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    background: #E65100;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.section-container--notice .section-container__header {
+    align-items: center;
+}
+
+.section-container--highlight .section-container__description {
+    text-align: left;
+}

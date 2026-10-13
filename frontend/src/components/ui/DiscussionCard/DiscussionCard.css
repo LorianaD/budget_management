@@ -1,0 +1,93 @@
+.discussion-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background: var(--white);
+}
+
+.discussion-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.discussion-card__header .badge {
+    padding: 4px 10px;
+    font-size: 12px;
+    text-transform: none;
+}
+
+.discussion-card__aside {
+    font-size: 12px;
+    color: #5A6678;
+}
+
+.discussion-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.discussion-card__title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #1A202C;
+}
+
+.discussion-card__description {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.discussion-card__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.discussion-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #5A6678;
+}
+
+.discussion-card__author {
+    font-weight: 700;
+    color: #1A202C;
+}
+
+/* Discussions populaires : trait sous l'en-tête, statut en majuscules */
+.discussion-card--popular {
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.discussion-card--popular .discussion-card__header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.discussion-card--popular .discussion-card__aside {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.discussion-card--popular .discussion-card__title {
+    font-size: 17px;
+}
+
+.discussion-card--popular .discussion-card__meta {
+    font-size: 12px;
+}

@@ -1,0 +1,38 @@
+.auth-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 24px;
+    min-height: 48px;
+    padding: 12px 48px;
+    border-top: 1px solid #F0F0F0;
+    background: var(--white);
+    font-size: 12px;
+}
+
+.auth-footer__copyright {
+    color: #64748B;
+}
+
+.auth-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
+
+.auth-footer__link:hover {
+    color: var(--blue);
+}
+
+.auth-footer__link--disabled,
+.auth-footer__link--disabled:hover {
+    color: #718096;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 600px) {
+    .auth-footer {
+        padding: 12px 16px;
+    }
+}

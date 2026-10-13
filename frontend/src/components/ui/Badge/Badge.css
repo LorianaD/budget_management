@@ -1,0 +1,76 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.badge--success {
+    background: var(--green);
+    color: #2E7D32;
+}
+
+.badge--info {
+    background: var(--pale-blue);
+    color: var(--blue);
+}
+
+.badge--warning {
+    background: #FFF7ED;
+    color: #B45309;
+}
+
+.badge--orange {
+    background: #FFF3E0;
+    color: #C25E00;
+}
+
+.badge--teal {
+    background: #E0F2F1;
+    color: var(--dark-green);
+}
+
+.badge--purple {
+    background: #F3E5F5;
+    color: var(--violet);
+}
+
+/* Solid badges (aid organization, profile tags): pill, white text */
+.badge--solid-blue,
+.badge--solid-green,
+.badge--solid-teal,
+.badge--solid-purple,
+.badge--solid-orange,
+.badge--solid-yellow {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    text-transform: none;
+    color: var(--white);
+}
+
+.badge--solid-green { background: #2E7D32; }
+.badge--solid-teal { background: var(--dark-green); }
+.badge--solid-purple { background: var(--violet); }
+/* Darkened orange to keep enough contrast with white text */
+.badge--solid-orange { background: #B45309; }
+.badge--solid-blue { background: var(--blue); }
+/* Brand yellow: dark text to stay readable */
+.badge--solid-yellow {
+    background: var(--orange);
+    color: #1A202C;
+}
+
+/* Rounded pill (e.g. member count) */
+.badge--pill {
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--green);
+    font-size: 11px;
+    text-transform: none;
+    color: #2E7D32;
+}

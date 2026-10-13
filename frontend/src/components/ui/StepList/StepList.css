@@ -1,0 +1,60 @@
+.step-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    list-style: none;
+}
+
+.step-list__item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 24px;
+}
+
+/* Trait pointillé entre deux pastilles (sauf après la dernière) */
+.step-list__item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 44px;
+    bottom: 4px;
+    left: 19px;
+    border-left: 2px dashed #D9E2EC;
+}
+
+.step-list__number {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--blue);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.step-list__item--success .step-list__number {
+    background: #2E7D32;
+}
+
+.step-list__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 8px;
+}
+
+.step-list__title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    color: #1A202C;
+}
+
+.step-list__description {
+    font-size: 14px;
+}

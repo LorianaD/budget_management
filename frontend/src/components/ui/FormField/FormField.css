@@ -1,0 +1,112 @@
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.form-field__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--grey);
+}
+
+/* The frame carries the border so the icon and the input sit inside it */
+.form-field__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid #D9E2EC;
+    border-radius: 10px;
+    background: var(--white);
+}
+
+/* Focus ring on the whole frame rather than on the bare input */
+.form-field__control:focus-within {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+}
+
+.form-field__input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font: inherit;
+    font-size: 15px;
+    color: #1A202C;
+}
+
+.form-field__input:focus-visible {
+    outline: none;
+}
+
+.form-field__input::placeholder {
+    color: #9AA5B4;
+    opacity: 1;
+}
+
+.form-field__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+/* Select: the native arrow is replaced by the Figma chevron */
+.form-field__select {
+    appearance: none;
+    cursor: pointer;
+}
+
+.form-field__select--empty {
+    color: #9AA5B4;
+}
+
+.form-field__chevron {
+    pointer-events: none;
+}
+
+/* Show / hide password toggle */
+.form-field__toggle {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Password visible: the eye is struck through */
+.form-field__toggle--active::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: #9AA5B4;
+    transform: rotate(-45deg);
+}
+
+.form-field__hint {
+    font-size: 12px;
+    color: #64748B;
+}
+
+.form-field--error .form-field__control {
+    border-color: var(--red);
+}
+
+.form-field__error {
+    font-size: 12px;
+    font-weight: 600;
+    color: #C62828;
+}

@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('../assets/font/Geist/Geist-VariableFont_wght.ttf');
+    font-weight: 100 900;
+    font-style: normal;
+     font-display: swap
+}
+
+@font-face {
+    font-family: 'Geist';
+    src: url('../assets/font/Geist/Geist-Italic-VariableFont_wght.ttf');
+    font-weight: 100 900;
+    font-style: italic;
+     font-display: swap
+}

@@ -1,0 +1,85 @@
+.donut-chart {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.donut-chart__ring {
+    --donut-size: 160px;
+    --donut-thickness: 24px;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: var(--donut-size);
+    height: var(--donut-size);
+}
+
+/* L'anneau est dessiné dans un pseudo-élément, évidé par un masque radial */
+.donut-chart__ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--donut-gradient);
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - var(--donut-thickness)),
+        #000 calc(100% - var(--donut-thickness) + 1px)
+    );
+}
+
+.donut-chart--large .donut-chart__ring {
+    --donut-size: 200px;
+    --donut-thickness: 28px;
+}
+
+.donut-chart__center {
+    position: relative;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--grey);
+}
+
+.donut-chart__legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.donut-chart__legend-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.donut-chart__legend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.donut-chart__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--grey);
+}
+
+.donut-chart__legend-item::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--legend-color);
+}
+
+@media screen and (max-width: 480px) {
+    .donut-chart {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

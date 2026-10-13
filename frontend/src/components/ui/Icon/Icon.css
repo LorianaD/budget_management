@@ -1,0 +1,41 @@
+.ui-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 64px;
+    height: 64px;
+
+    padding: 10px;
+
+    border-radius: 32px;
+
+    aspect-ratio: 1/1;
+}
+
+.ui-icon--blue {
+    background: var(--pale-blue);
+}
+
+.ui-icon--green {
+    background: var(--pale-green);
+}
+
+.ui-icon--orange {
+    background: var(--pale-orange);
+}
+
+.ui-icon--violet {
+    background: var(--pale-violet);
+}
+
+.icon--financialAid {
+    border-radius: 8px;
+}
+.ui-icon--pink {
+    background: var(--pale-pink);
+}
+
+.ui-icon--teal {
+    background: rgba(0, 121, 107, 0.1);
+}
