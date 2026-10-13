@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Expense;
+use App\Entity\BudgetAllocation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Expense>
+ * @extends ServiceEntityRepository<BudgetAllocation>
  */
-class ExpenseRepository extends ServiceEntityRepository
+class BudgetAllocationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Expense::class);
+        parent::__construct($registry, BudgetAllocation::class);
     }
 
     //    /**
-    //     * @return Expense[] Returns an array of Expense objects
+    //     * @return BudgetAllocation[] Returns an array of BudgetAllocation objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('e')
-    //            ->andWhere('e.exampleField = :val')
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('e.id', 'ASC')
+    //            ->orderBy('b.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Expense
+    //    public function findOneBySomeField($value): ?BudgetAllocation
     //    {
-    //        return $this->createQueryBuilder('e')
-    //            ->andWhere('e.exampleField = :val')
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

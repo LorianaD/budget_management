@@ -9,21 +9,48 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    // ========================================
+    // PROPERTIES
+    // ========================================
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTime $birthDate = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $job = null;
+
+    // ========================================
+    // SECURITY
+    // ========================================
+
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
     private ?string $email = null;
 
     /**
-     * @var list<string> The user roles
+     * @var list<string>
      */
     #[ORM\Column]
     private array $roles = [];
@@ -34,129 +61,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $firstname = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $lastname = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTime $birthDate = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $job = null;
+    // ========================================
+    // RELATIONSHIPS
+    // ========================================
 
     /**
-     * @var Collection<int, Income>
+     * @var Collection<int, Category>
      */
-    #[ORM\OneToMany(targetEntity: Income::class, mappedBy: 'user')]
-    private Collection $incomes;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Category::class)]
+    private Collection $categories;
 
     /**
-     * @var Collection<int, Expense>
+     * @var Collection<int, Transaction>
      */
-    #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'user')]
-    private Collection $expenses;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Transaction::class)]
+    private Collection $transactions;
 
     /**
      * @var Collection<int, Budget>
      */
-    #[ORM\OneToMany(targetEntity: Budget::class, mappedBy: 'user')]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Budget::class)]
     private Collection $budgets;
 
     /**
      * @var Collection<int, SavingGoal>
      */
-    #[ORM\OneToMany(targetEntity: SavingGoal::class, mappedBy: 'user')]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: SavingGoal::class)]
     private Collection $savingGoals;
+
+    // ========================================
+    // CONSTRUCTOR
+    // ========================================
 
     public function __construct()
     {
-        $this->incomes = new ArrayCollection();
-        $this->expenses = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
         $this->budgets = new ArrayCollection();
         $this->savingGoals = new ArrayCollection();
     }
 
+    // ========================================
+    // GETTERS & SETTERS
+    // ========================================
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    /**
-     * @param list<string> $roles
-     */
-    public function setRoles(array $roles): static
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Ensure the session doesn't contain actual password hashes by CRC32C-hashing them, as supported since Symfony 7.3.
-     */
-    public function __serialize(): array
-    {
-        $data = (array) $this;
-        $data["\0".self::class."\0password"] = hash('crc32c', $this->password);
-
-        return $data;
-    }
-
-    #[\Deprecated]
-    public function eraseCredentials(): void
-    {
-        // @deprecated, to be removed when upgrading to Symfony 8
     }
 
     public function getFirstname(): ?string
@@ -207,65 +158,153 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Income>
-     */
-    public function getIncomes(): Collection
+    // ========================================
+    // AUTHENTICATION
+    // ========================================
+
+    public function getEmail(): ?string
     {
-        return $this->incomes;
+        return $this->email;
     }
 
-    public function addIncome(Income $income): static
+    public function setEmail(string $email): static
     {
-        if (!$this->incomes->contains($income)) {
-            $this->incomes->add($income);
-            $income->setUser($this);
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_values(array_unique($roles));
+    }
+
+    /**
+     * @param list<string> $roles
+     */
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function __serialize(): array
+    {
+        $data = (array) $this;
+
+        $data["\0" . self::class . "\0password"] = hash(
+            'crc32c',
+            $this->password ?? ''
+        );
+
+        return $data;
+    }
+
+    #[\Deprecated]
+    public function eraseCredentials(): void
+    {
+        // Deprecated since Symfony 7.3
+    }
+
+    // ========================================
+    // CATEGORIES
+    // ========================================
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+            $category->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeIncome(Income $income): static
+    public function removeCategory(Category $category): static
     {
-        if ($this->incomes->removeElement($income)) {
-            // set the owning side to null (unless already changed)
-            if ($income->getUser() === $this) {
-                $income->setUser(null);
+        if ($this->categories->removeElement($category)) {
+            if ($category->getUser() === $this) {
+                $category->setUser(null);
             }
         }
 
         return $this;
     }
 
+    // ========================================
+    // TRANSACTIONS
+    // ========================================
+
     /**
-     * @return Collection<int, Expense>
+     * @return Collection<int, Transaction>
      */
-    public function getExpenses(): Collection
+    public function getTransactions(): Collection
     {
-        return $this->expenses;
+        return $this->transactions;
     }
 
-    public function addExpense(Expense $expense): static
+    public function addTransaction(Transaction $transaction): static
     {
-        if (!$this->expenses->contains($expense)) {
-            $this->expenses->add($expense);
-            $expense->setUser($this);
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions->add($transaction);
+            $transaction->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeExpense(Expense $expense): static
+    public function removeTransaction(Transaction $transaction): static
     {
-        if ($this->expenses->removeElement($expense)) {
-            // set the owning side to null (unless already changed)
-            if ($expense->getUser() === $this) {
-                $expense->setUser(null);
+        if ($this->transactions->removeElement($transaction)) {
+            if ($transaction->getUser() === $this) {
+                $transaction->setUser(null);
             }
         }
 
         return $this;
     }
+
+    // ========================================
+    // BUDGETS
+    // ========================================
 
     /**
      * @return Collection<int, Budget>
@@ -288,7 +327,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeBudget(Budget $budget): static
     {
         if ($this->budgets->removeElement($budget)) {
-            // set the owning side to null (unless already changed)
             if ($budget->getUser() === $this) {
                 $budget->setUser(null);
             }
@@ -296,6 +334,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    // ========================================
+    // SAVING GOALS
+    // ========================================
 
     /**
      * @return Collection<int, SavingGoal>
@@ -318,7 +360,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeSavingGoal(SavingGoal $savingGoal): static
     {
         if ($this->savingGoals->removeElement($savingGoal)) {
-            // set the owning side to null (unless already changed)
             if ($savingGoal->getUser() === $this) {
                 $savingGoal->setUser(null);
             }
