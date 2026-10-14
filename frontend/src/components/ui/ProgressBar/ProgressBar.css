@@ -135,3 +135,27 @@
     font-weight: 400;
     color: var(--grey);
 }
+
+/* Fund variant (safety fund): thick bar on top, rate in a pale yellow pill below */
+.progress-bar--fund {
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+.progress-bar--fund .progress-bar__track {
+    height: 12px;
+    background: #F5F7FA;
+}
+
+.progress-bar--fund .progress-bar__header {
+    justify-content: flex-start;
+}
+
+.progress-bar--fund .progress-bar__label {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #FFF8E1;
+    font-size: 11px;
+    font-weight: 600;
+    color: #A36200;
+}

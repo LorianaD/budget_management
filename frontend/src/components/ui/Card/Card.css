@@ -398,6 +398,7 @@
 .card--tone-green { border-left: 6px solid #2E7D32; }
 .card--tone-blue { border-left: 6px solid var(--blue); }
 .card--tone-orange { border-left: 6px solid var(--orange); }
+.card--tone-red { border-left: 6px solid #C62828; }
 
 /* Suggested aid (dashboard): bordered tile, title and status badge on one line */
 .card--suggestedAid {
@@ -449,4 +450,49 @@
 
 .card--recommendedMethod .button {
     width: 100%;
+}
+
+/* Budget suggestion: icon and status badge on the first line, title below */
+.card--suggestion {
+    gap: 12px;
+    padding: 20px;
+    border-left-width: 4px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+.card-header--suggestion {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.card-header--suggestion .card-header__heading {
+    display: contents;
+}
+
+.card-header--suggestion .ui-icon {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: 0;
+}
+
+.card-header--suggestion .badge {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+}
+
+.card-header--suggestion .card-header__title {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    font-size: 16px;
+}
+
+.card--suggestion .card-description {
+    font-size: 13px;
+    line-height: 1.5;
 }

@@ -34,12 +34,15 @@ function SearchBar({ label, placeholder, buttonLabel, buttonVariant = "primary",
                 onChange={(event) => handleChange(event.target.value)}
             />
 
-            <Button
-                label={buttonLabel}
-                variant={buttonVariant}
-                size="small"
-                type="submit"
-            />
+            {/* Live filters (value/onChange) need no submit button */}
+            {buttonLabel && (
+                <Button
+                    label={buttonLabel}
+                    variant={buttonVariant}
+                    size="small"
+                    type="submit"
+                />
+            )}
         </form>
     );
 }

@@ -2,7 +2,6 @@
 // resource. Internal to src/services: pages and hooks use @/services.
 export * as budgetMock from "./budgets";
 export * as categoryMock from "./categories";
-export * as expenseMock from "./expenses";
-export * as incomeMock from "./incomes";
 export * as savingGoalMock from "./savingGoals";
+export * as transactionMock from "./transactions";
 export * as userMock from "./users";

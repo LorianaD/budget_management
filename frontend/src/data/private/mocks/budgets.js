@@ -1,20 +1,8 @@
-// FICTIONAL — Budget entity: one planned amount per category and month.
-// `month` uses the provisional "07" format, `year` is an integer.
-// July 2026 matches the "Budget prévisionnel" frame (total 1 750 €).
+// FICTIONAL — Budget entity: one budget per user and month (UNIQ_BUDGET_USER_PERIOD).
+// month and year are integers; method is a BudgetMethod value
+// ("custom" | "50_30_20" | "zero_based" | "envelope").
+// The planned amounts live in BudgetAllocation (./budgetAllocations.js).
 export const budgets = [
-    // June 2026
-    { id: 1, month: "06", year: 2026, plannedAmount: "700.00", category: { id: 1 } },
-    { id: 2, month: "06", year: 2026, plannedAmount: "400.00", category: { id: 2 } },
-    { id: 3, month: "06", year: 2026, plannedAmount: "200.00", category: { id: 3 } },
-    { id: 4, month: "06", year: 2026, plannedAmount: "150.00", category: { id: 4 } },
-    { id: 5, month: "06", year: 2026, plannedAmount: "150.00", category: { id: 5 } },
-    { id: 6, month: "06", year: 2026, plannedAmount: "100.00", category: { id: 6 } },
-
-    // July 2026
-    { id: 7, month: "07", year: 2026, plannedAmount: "700.00", category: { id: 1 } },
-    { id: 8, month: "07", year: 2026, plannedAmount: "400.00", category: { id: 2 } },
-    { id: 9, month: "07", year: 2026, plannedAmount: "200.00", category: { id: 3 } },
-    { id: 10, month: "07", year: 2026, plannedAmount: "200.00", category: { id: 4 } },
-    { id: 11, month: "07", year: 2026, plannedAmount: "150.00", category: { id: 5 } },
-    { id: 12, month: "07", year: 2026, plannedAmount: "100.00", category: { id: 6 } },
+    { id: 1, month: 6, year: 2026, method: "custom", createdAt: "2026-05-28T18:00:00+02:00", updatedAt: null },
+    { id: 2, month: 7, year: 2026, method: "custom", createdAt: "2026-06-28T18:00:00+02:00", updatedAt: "2026-07-01T09:00:00+02:00" },
 ];

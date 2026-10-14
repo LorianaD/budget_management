@@ -4,9 +4,10 @@ import './StepList.css';
 // <ol> annonce déjà la numérotation : la pastille visuelle est masquée
 // aux lecteurs d'écran pour éviter « 1, 1. Comprendre... ».
 // steps = [{ key, number, title, description, variant? }]
-function StepList({ steps = [] }) {
+// layout "horizontal": steps side by side (stacked again on small screens).
+function StepList({ steps = [], layout = "vertical" }) {
     return (
-        <ol className="step-list">
+        <ol className={`step-list step-list--${layout}`}>
             {steps.map((step) => (
                 <li
                     key={step.key}

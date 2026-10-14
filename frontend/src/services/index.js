@@ -4,9 +4,9 @@
 // api/, mocks/, mappers/, http/ and config/ are internal (enforced by ESLint).
 export * from "./budgetService";
 export * from "./categoryService";
-export * from "./expenseService";
-export * from "./incomeService";
+export * from "./periodDataService";
 export * from "./savingGoalService";
+export * from "./transactionService";
 export * from "./userService";
 export * from "./clock";
 export { SERVICE_ERROR_CODES, ServiceError } from "./errors";

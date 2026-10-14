@@ -1,5 +1,5 @@
 // FUTURE EXTENSION — FICTIONAL. Proposed RecurringTransaction entity.
-// Amounts match the corresponding monthly expenses in ../expenses.js.
+// Amounts match the corresponding completed expense transactions in ../transactions.js.
 // frequency: "monthly" | "yearly"
 export const recurringTransactions = [
     { id: 1, label: "Loyer", amount: "560.00", frequency: "monthly", category: { id: 1 } },

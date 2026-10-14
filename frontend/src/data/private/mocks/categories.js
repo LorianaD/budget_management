@@ -1,13 +1,22 @@
 // FICTIONAL — Category entity.
-// Categories are global in the backend (no user relation).
-// `type` is a free string in the entity and its meaning is not defined yet
-// (it must support several budget methods, not only 50/30/20): every mock
-// category uses the neutral value "expense" until the backend decides.
+// - type: "expense" | "income" (TransactionType): expense and income
+//   categories are distinct, a transaction uses a category of its own type
+// - code: stable technical identifier
+// - isSystem: categories provided by the application (user = null, omitted)
+// - parent: optional sub-category relation (unused by the demo)
+const SYSTEM = { isSystem: true, parent: null, createdAt: "2026-01-01T00:00:00+01:00", updatedAt: null, deletedAt: null };
+
 export const categories = [
-    { id: 1, name: "Logement", type: "expense" },
-    { id: 2, name: "Alimentation", type: "expense" },
-    { id: 3, name: "Transport", type: "expense" },
-    { id: 4, name: "Loisirs", type: "expense" },
-    { id: 5, name: "Santé", type: "expense" },
-    { id: 6, name: "Formation", type: "expense" },
+    // Expenses
+    { id: 1, name: "Logement", code: "housing", type: "expense", ...SYSTEM },
+    { id: 2, name: "Alimentation", code: "food", type: "expense", ...SYSTEM },
+    { id: 3, name: "Transport", code: "transport", type: "expense", ...SYSTEM },
+    { id: 4, name: "Loisirs", code: "leisure", type: "expense", ...SYSTEM },
+    { id: 5, name: "Santé", code: "health", type: "expense", ...SYSTEM },
+    { id: 6, name: "Formation", code: "education", type: "expense", ...SYSTEM },
+
+    // Incomes
+    { id: 7, name: "Salaire", code: "salary", type: "income", ...SYSTEM },
+    { id: 8, name: "Aides et allocations", code: "benefits", type: "income", ...SYSTEM },
+    { id: 9, name: "Autres revenus", code: "other_income", type: "income", ...SYSTEM },
 ];

@@ -1,0 +1,243 @@
+/* ---------- Page grid ---------- */
+.budget {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+}
+
+/* Main panel + 410px side panel (Figma row 2) */
+.budget__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 410px);
+    align-items: start;
+    gap: 24px;
+}
+
+/* Timeline + 520px side column (Figma row 3) */
+.budget__row--wide-side {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+}
+
+.budget__column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+}
+
+.budget__header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.budget__header-actions .button {
+    border-radius: 99px;
+}
+
+.budget__empty {
+    font-size: 14px;
+}
+
+/* ---------- BudgetTable ---------- */
+/* Table layout and mobile stacking come from DataTable */
+.budget-table__category .mask-icon {
+    margin-right: 12px;
+    vertical-align: -3px;
+    color: var(--grey);
+}
+
+/* Total row: label and difference in blue (Figma) */
+.budget-table .data-table__footer .data-table__row-header,
+.budget-table .data-table__footer .data-table__cell:last-child {
+    color: var(--blue);
+}
+
+.budget-table__alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.budget-table__alert {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-left: 4px solid var(--orange);
+    background: #FFF8E1;
+    font-size: 13px;
+    color: #92400E;
+}
+
+.budget-table__alert .mask-icon {
+    flex-shrink: 0;
+}
+
+/* ---------- BudgetBreakdown ---------- */
+.budget-breakdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.budget-breakdown__total {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.budget-breakdown__label {
+    font-size: 12px;
+}
+
+/* ---------- MonthMovements ---------- */
+/* Vertical line linking the steps, dots drawn in CSS (decorative) */
+.month-movements {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+}
+
+.month-movements__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 8px 16px;
+    padding: 0 0 32px 32px;
+}
+
+.month-movements__step::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--blue);
+}
+
+.month-movements__step--edge::before {
+    background: #2E7D32;
+}
+
+.month-movements__step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    bottom: 0;
+    left: 5px;
+    width: 2px;
+    background: #D9E2EC;
+}
+
+.month-movements__step:last-child {
+    padding-bottom: 0;
+}
+
+.month-movements__date {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.month-movements__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1A202C;
+}
+
+.month-movements__flows {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+}
+
+.month-movements__flow--income { color: #2E7D32; }
+.month-movements__flow--expenses { color: #C62828; }
+.month-movements__flow--savings { color: var(--blue); }
+
+.month-movements__balance {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #F5F7FA;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ---------- SafetyFund ---------- */
+.safety-fund {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.safety-fund__amounts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.safety-fund__saved {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.safety-fund .button {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.safety-fund__recommendation {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* ---------- QuickActions ---------- */
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quick-actions .button {
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 0;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1200px) {
+    .budget__row,
+    .budget__row--wide-side {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .budget {
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .month-movements__step {
+        grid-template-columns: minmax(0, 1fr);
+        padding-left: 28px;
+    }
+
+    .month-movements__balance {
+        justify-self: start;
+    }
+}

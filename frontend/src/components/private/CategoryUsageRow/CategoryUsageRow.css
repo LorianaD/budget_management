@@ -1,0 +1,24 @@
+.category-usage-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-usage-row__icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #F5F7FA;
+    color: var(--grey);
+}
+
+.category-usage-row__note {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.category-usage-row__note--warning { color: #B45309; }
+.category-usage-row__note--over { color: #C62828; }

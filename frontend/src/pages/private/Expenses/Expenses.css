@@ -1,0 +1,267 @@
+/* ---------- Page grid ---------- */
+.transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+}
+
+/* Breakdown + 460px alerts column (Figma split row) */
+.transactions__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    align-items: start;
+    gap: 16px;
+}
+
+.transactions__header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.transactions__header-actions .button {
+    border-radius: 99px;
+}
+
+.transactions__empty {
+    font-size: 14px;
+}
+
+/* ---------- TransactionFilters ---------- */
+.transaction-filters,
+.transactions-table {
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.transaction-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+}
+
+.transaction-filters .search-bar {
+    min-height: 46px;
+    border-color: transparent;
+    background: #F5F7FA;
+}
+
+.transaction-filters__row,
+.transaction-filters__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.transaction-filters__selects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.transaction-filters__status {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.transaction-filters__results {
+    font-size: 13px;
+}
+
+/* "Filtres actifs :" + one pill per applied filter */
+.transaction-filters__active,
+.transaction-filters__active-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.transaction-filters__active {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ---------- TransactionTable ---------- */
+.transactions-table {
+    overflow: hidden;
+}
+
+.transactions-table .data-table__cell {
+    border-bottom-color: #F0F0F0;
+}
+
+.transactions-table__description {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-weight: 700;
+    white-space: normal;
+}
+
+.transactions-table__note {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--grey);
+}
+
+.transactions-table__amount {
+    font-weight: 700;
+}
+
+.transactions-table__amount--expense { color: #C62828; }
+.transactions-table__amount--income { color: #2E7D32; }
+
+/* Planned: not a movement yet (muted amount); cancelled: struck through */
+.transactions-table__row--planned .transactions-table__amount {
+    opacity: 0.7;
+}
+
+.transactions-table__row--cancelled .transactions-table__description,
+.transactions-table__row--cancelled .transactions-table__amount {
+    text-decoration: line-through;
+    color: var(--grey);
+}
+
+.transactions-table__actions {
+    display: inline-flex;
+    gap: 12px;
+}
+
+.transactions-table__action {
+    display: flex;
+    padding: 4px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    color: var(--grey);
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.transactions-table__more {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
+.transactions-table__more .button {
+    color: var(--blue);
+}
+
+/* ---------- ExpenseBreakdown ---------- */
+.expense-breakdown {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.expense-breakdown__total {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1A202C;
+}
+
+.expense-breakdown__label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* ---------- BudgetAlerts ---------- */
+.budget-alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ---------- RecurringTransactions ---------- */
+.recurring-list__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    padding: 16px 0;
+}
+
+.recurring-list__item + .recurring-list__item {
+    border-top: 1px solid #F0F0F0;
+}
+
+.recurring-list__icon {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #F5F7FA;
+    color: var(--grey);
+}
+
+.recurring-list__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 140px;
+    font-size: 13px;
+}
+
+.recurring-list__label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.recurring-list__amount {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A202C;
+    white-space: nowrap;
+}
+
+.recurring-list__actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1200px) {
+    .transactions__row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .transactions {
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .transaction-filters__selects,
+    .transaction-filters__selects .select-field,
+    .transaction-filters__selects .select-field__input {
+        width: 100%;
+    }
+
+    .transactions-table {
+        padding: 0 16px;
+    }
+
+    .expense-breakdown {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .recurring-list__actions {
+        width: 100%;
+    }
+}

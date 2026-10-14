@@ -58,3 +58,66 @@
 .step-list__description {
     font-size: 14px;
 }
+
+/* Horizontal layout: numbered steps side by side, dashed line between them */
+.step-list--horizontal {
+    flex-direction: row;
+}
+
+.step-list--horizontal .step-list__item {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px;
+    text-align: center;
+}
+
+.step-list--horizontal .step-list__item:not(:last-child)::before {
+    top: 16px;
+    bottom: auto;
+    left: calc(50% + 28px);
+    right: calc(-50% + 28px);
+    border-top: 2px dashed #D9E2EC;
+    border-left: none;
+}
+
+.step-list--horizontal .step-list__number {
+    width: 32px;
+    height: 32px;
+}
+
+.step-list--horizontal .step-list__content {
+    padding-top: 0;
+}
+
+.step-list--horizontal .step-list__title {
+    font-size: 14px;
+}
+
+.step-list--horizontal .step-list__description {
+    font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .step-list--horizontal {
+        flex-direction: column;
+    }
+
+    .step-list--horizontal .step-list__item {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 0 0 20px;
+        text-align: left;
+    }
+
+    .step-list--horizontal .step-list__item:not(:last-child)::before {
+        top: 40px;
+        bottom: 4px;
+        left: 15px;
+        right: auto;
+        border-top: none;
+        border-left: 2px dashed #D9E2EC;
+    }
+}

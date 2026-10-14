@@ -1,6 +1,6 @@
-import { useId, useState } from "react";
-import { Button, DonutChart, ProgressBar, SectionEyebrow } from "@/components";
-import { formatAmount } from "@/utils";
+import { useState } from "react";
+import { Button, DonutChart, ProgressBar, RangeField, SectionEyebrow } from "@/components";
+import { formatAmount, getBudgetSplit } from "@/utils";
 
 // Calculateur 50/30/20 : la répartition est recalculée à chaque mouvement du curseur.
 // Simple calcul d'affichage côté client, sans enregistrement ni appel d'API.
@@ -9,14 +9,9 @@ function Calculator({ page }) {
     const { income, allocations, results } = section;
 
     const [monthlyIncome, setMonthlyIncome] = useState(income.defaultValue);
-    const inputId = useId();
 
-    const breakdown = allocations.map((allocation) => ({
-        ...allocation,
-        amount: (monthlyIncome * allocation.percentage) / 100,
-    }));
-
-    const formattedIncome = formatAmount(monthlyIncome, income.currency);
+    const breakdown = getBudgetSplit(monthlyIncome, allocations);
+    const formatIncome = (value) => formatAmount(value, income.currency);
 
     return (
         <section id="calculator" className="section-calculator">
@@ -32,32 +27,16 @@ function Calculator({ page }) {
 
                 <div className="section-calculator__body">
                     <div className="section-calculator__inputs">
-                        <div className="section-calculator__field">
-                            <label htmlFor={inputId} className="section-calculator__label">
-                                {income.label}
-                            </label>
-
-                            <output htmlFor={inputId} className="section-calculator__amount">
-                                {formattedIncome}
-                            </output>
-
-                            <input
-                                id={inputId}
-                                className="section-calculator__range"
-                                type="range"
-                                min={income.min}
-                                max={income.max}
-                                step={income.step}
-                                value={monthlyIncome}
-                                aria-valuetext={formattedIncome}
-                                onChange={(event) => setMonthlyIncome(Number(event.target.value))}
-                                style={{ "--range-progress": `${(monthlyIncome / income.max) * 100}%` }}
-                            />
-
-                            <p className="section-calculator__method">
-                                {section.methodLabel}
-                            </p>
-                        </div>
+                        <RangeField
+                            label={income.label}
+                            value={monthlyIncome}
+                            min={income.min}
+                            max={income.max}
+                            step={income.step}
+                            formatValue={formatIncome}
+                            onChange={setMonthlyIncome}
+                            note={section.methodLabel}
+                        />
 
                         {section.actions.map((btn) => (
                             <Button
@@ -86,7 +65,7 @@ function Calculator({ page }) {
                             ))}
 
                             <p className="section-calculator__total">
-                                {results.totalLabel} : {formattedIncome}
+                                {results.totalLabel} : {formatIncome(monthlyIncome)}
                             </p>
                         </div>
 

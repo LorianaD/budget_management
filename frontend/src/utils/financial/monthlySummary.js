@@ -1,9 +1,13 @@
 import { getRate, subtractAmounts, sumAmounts } from "./amounts";
+import { getCompletedExpenses, getCompletedIncomes } from "./transactions";
 
-// Key figures of one period. All collections must already be limited to that period.
-// - balance: incomes minus expenses ("Solde actuel")
+// Key figures of one period. All collections must already be limited to that
+// period; only completed transactions are counted (see ./transactions).
+// - balance: incomes minus expenses ("Solde du mois")
 // - remainingToLive: balance minus the money put aside in saving goals ("Reste à vivre")
-export function getMonthlySummary({ incomes, expenses, savingDeposits }) {
+export function getMonthlySummary({ transactions, savingDeposits }) {
+    const incomes = getCompletedIncomes(transactions);
+    const expenses = getCompletedExpenses(transactions);
     const totalIncome = sumAmounts(incomes);
     const totalExpenses = sumAmounts(expenses);
     const totalSavings = sumAmounts(savingDeposits);

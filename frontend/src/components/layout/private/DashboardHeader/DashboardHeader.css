@@ -30,8 +30,20 @@
 .dashboard-header__actions {
     display: flex;
     flex-shrink: 0;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 12px 20px;
+}
+
+/* Pages with several actions (period selector + buttons): they move under the title */
+@media screen and (max-width: 1200px) {
+    .dashboard-header {
+        flex-wrap: wrap;
+    }
+
+    .dashboard-header__actions {
+        flex-shrink: 1;
+    }
 }
 
 @media screen and (max-width: 600px) {

@@ -1,0 +1,9 @@
+.bar-chart {
+    margin: 0;
+    min-width: 0;
+}
+
+.bar-chart__canvas {
+    position: relative;
+    height: var(--bar-chart-height);
+}

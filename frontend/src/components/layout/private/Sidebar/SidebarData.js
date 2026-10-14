@@ -24,11 +24,11 @@ const SidebarData = {
 
     nav: [
         { ...LinksData.dashboard, icon: homeIcon },
-        { ...LinksData.budget, icon: creditCard, disabled: true },
-        { ...LinksData.expenses, icon: barChartIcon, disabled: true },
-        { ...LinksData.savingGoals, icon: target, disabled: true },
-        { ...LinksData.budgetMethods, icon: bookOpenIcon, disabled: true },
-        { ...LinksData.myAids, icon: handHelping, disabled: true },
+        { ...LinksData.budget, icon: creditCard },
+        { ...LinksData.expenses, icon: barChartIcon },
+        { ...LinksData.savingGoals, icon: target },
+        { ...LinksData.budgetMethods, icon: bookOpenIcon },
+        { ...LinksData.myAids, icon: handHelping },
         // Public page: leaves the private area, so the period is not carried over
         { ...LinksData.community, icon: users, isPublic: true },
         // No route decided yet

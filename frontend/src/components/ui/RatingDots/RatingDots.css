@@ -1,0 +1,33 @@
+.rating-dots {
+    display: inline-flex;
+    --rating-color: var(--blue);
+}
+
+.rating-dots__dots {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.rating-dots__dot {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #E2E8F0;
+    border-radius: 50%;
+    background: #F5F7FA;
+}
+
+.rating-dots__dot--filled {
+    border-color: var(--rating-color);
+    background: var(--rating-color);
+}
+
+.rating-dots--green { --rating-color: #2E7D32; }
+.rating-dots--orange { --rating-color: #F57C00; }
+.rating-dots--teal { --rating-color: var(--dark-green); }
+
+/* Windows high contrast: keep filled and empty dots distinguishable */
+@media (forced-colors: active) {
+    .rating-dots__dot--filled {
+        background: CanvasText;
+    }
+}

@@ -62,6 +62,12 @@
     background: transparent;
 }
 
+.button--outline-success {
+    border-color: #2E7D32;
+    color: #2E7D32;
+    background: transparent;
+}
+
 .button--outline-white {
     border-color: var(--white);
     color: var(--white);

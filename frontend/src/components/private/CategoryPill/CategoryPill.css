@@ -1,0 +1,16 @@
+.category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: color-mix(in srgb, var(--category-color) 12%, white);
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A202C;
+    white-space: nowrap;
+}
+
+.category-pill__icon {
+    color: var(--category-color);
+}

@@ -1,0 +1,251 @@
+/* ---------- Page grid ---------- */
+.saving-goals {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+}
+
+.saving-goals__header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.saving-goals__header-actions .button {
+    border-radius: 99px;
+}
+
+/* Sections without a panel (Figma: title above the cards) */
+.saving-goals__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.saving-goals__section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.saving-goals__section-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.saving-goals__section-description,
+.saving-goals__empty {
+    font-size: 14px;
+}
+
+/* ---------- GoalList ---------- */
+.goal-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.goal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.goal-card__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.goal-card__icon {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(21, 101, 192, 0.1);
+    color: var(--blue);
+}
+
+.goal-card__heading {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    min-width: 0;
+}
+
+.goal-card__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+/* Amounts "450 € / 1 000 €" and deadline under the bar */
+.goal-card .progress-bar__header {
+    flex-wrap: wrap;
+}
+
+.goal-card .progress-bar__label {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey);
+}
+
+.goal-card__saved {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--blue);
+}
+
+/* Text colours darker than the bar colours, for contrast */
+.goal-card--reached .goal-card__saved { color: #2E7D32; }
+.goal-card--overdue .goal-card__saved { color: #B45309; }
+.goal-card--reached .goal-card__icon { background: rgba(46, 125, 50, 0.1); color: #2E7D32; }
+.goal-card--overdue .goal-card__icon { background: rgba(245, 124, 0, 0.12); color: #B45309; }
+
+.goal-card__deadline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    white-space: normal;
+}
+
+.goal-card--overdue .goal-card__deadline {
+    font-weight: 600;
+    color: #B45309;
+}
+
+.goal-card__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: auto;
+}
+
+.goal-card__actions .button {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* ---------- UpcomingGoals ---------- */
+.upcoming-goals {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.upcoming-goals__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.upcoming-goals__item--overdue {
+    border-left-color: #F57C00;
+}
+
+.upcoming-goals__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    font-size: 14px;
+}
+
+.upcoming-goals__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A202C;
+}
+
+.upcoming-goals__deadline {
+    font-size: 12px;
+}
+
+.upcoming-goals__item--overdue .upcoming-goals__deadline {
+    font-weight: 600;
+    color: #B45309;
+}
+
+.upcoming-goals__rate {
+    font-size: 10px;
+    font-weight: 800;
+    color: #1A202C;
+}
+
+/* ---------- LatestDeposits ---------- */
+.latest-deposits__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.latest-deposits__count {
+    font-size: 13px;
+}
+
+.latest-deposits__footer .button {
+    color: var(--blue);
+}
+
+/* ---------- MotivationBanner ---------- */
+.motivation-banner__text {
+    max-width: 500px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.motivation-banner__action .button {
+    border-radius: 8px;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1200px) {
+    .upcoming-goals {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .goal-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .saving-goals {
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .goal-card {
+        padding: 20px;
+    }
+
+    .goal-card__actions {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

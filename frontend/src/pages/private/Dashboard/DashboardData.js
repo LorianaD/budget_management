@@ -7,7 +7,7 @@ import {
     target,
     walletIcon,
 } from "@/assets";
-import { LinksData } from "@/data";
+import { LinksData, SuggestedAidsData } from "@/data";
 
 // Texts and presentation content of the dashboard (Figma 11:4).
 // Figures never live here: they are computed from the services data.
@@ -90,36 +90,16 @@ const DashboardData = {
         title: "Aides qui pourraient vous intéresser",
         // Figma says "Basé sur votre profil": eligibility is not computed, so the
         // badges show the aid's domain instead of an eligibility status.
-        description: "Quelques aides à vérifier selon votre situation.",
-        items: [
-            {
-                id: "aid-activity-bonus",
-                variant: "suggestedAid",
-                tone: "green",
-                title: "Prime d'activité",
-                badge: { label: "Revenus", variant: "soft-success" },
-                description: "Complément de revenu pour les travailleurs à faibles salaires. Aide versée par la CAF.",
-                btn: { label: "Voir les détails", variant: "outline", size: "small", link: LinksData.helps.path },
-            },
-            {
-                id: "aid-housing",
-                variant: "suggestedAid",
-                tone: "blue",
-                title: "APL — Aide au logement",
-                badge: { label: "Logement", variant: "soft-info" },
-                description: "Aide personnalisée pour réduire votre loyer ou remboursement de prêt.",
-                btn: { label: "Voir les détails", variant: "outline", size: "small", link: LinksData.helps.path },
-            },
-            {
-                id: "aid-health",
-                variant: "suggestedAid",
-                tone: "green",
-                title: "Complémentaire Santé Solidaire",
-                badge: { label: "Santé", variant: "soft-success" },
-                description: "Mutuelle gratuite ou à faible coût pour les personnes à revenus modestes.",
-                btn: { label: "Voir les détails", variant: "outline", size: "small", link: LinksData.helps.path },
-            },
-        ],
+        description: SuggestedAidsData.description,
+        items: SuggestedAidsData.items.map((aid) => ({
+            id: `aid-${aid.key}`,
+            variant: "suggestedAid",
+            tone: aid.tone,
+            title: aid.title,
+            badge: aid.badge,
+            description: aid.description,
+            btn: { label: "Voir les détails", variant: "outline", size: "small", link: LinksData.helps.path },
+        })),
     },
 
     dailyTip: {

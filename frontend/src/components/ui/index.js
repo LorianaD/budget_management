@@ -26,6 +26,12 @@ export * from './AuthVisual';
 export * from './AuthPage';
 export * from './MaskIcon';
 export * from './AsyncState';
+export * from './DataTable';
+export * from './Tabs';
+export * from './ChipGroup';
+export * from './SelectField';
+export * from './RangeField';
+export * from './RatingDots';
 // Charts are NOT re-exported here: import them from "@/components/ui/charts"
 // so Chart.js stays in the lazily loaded private area chunk.
 

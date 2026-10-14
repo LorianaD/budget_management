@@ -3,7 +3,8 @@ import { selectSource } from "@/services/config";
 import { mapCategory } from "@/services/mappers";
 import { categoryMock } from "@/services/mocks";
 
-// Categories are global and read-only for the private area
+// Income and expense categories (Category.type), read-only for the private area.
+// Callers filter them by type with getCategoriesOfType (utils/financial).
 const source = selectSource({ api: categoryApi, mock: categoryMock });
 
 export async function getCategories(options) {

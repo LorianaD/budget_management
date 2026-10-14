@@ -1,25 +1,25 @@
 import {
     compareIsoDatesDesc,
+    getBudgetStatus,
     getBudgetUsage,
+    getCompletedTransactions,
     getDailyAmount,
+    getDepositsOfPeriod,
     getGoalProgress,
     getMonthlySummary,
     getRemainingDaysInPeriod,
+    getSavingsOverview,
+    getUpcomingGoals,
     getVariationRate,
-    isInPeriod,
+    TRANSACTION_TYPES,
 } from "@/utils";
 
 // Pure functions turning the raw dashboard data (useDashboardData) into what
 // each section displays. Numbers and statuses only: texts live in DashboardData.js.
 
-// Usage rate from which a category is flagged (same rule as the budget alerts)
-export const BUDGET_WARNING_RATE = 0.8;
 // Below 1 % of change, a figure is considered stable
 const STABLE_VARIATION_RATE = 0.01;
 const RECENT_ACTIVITY_LIMIT = 4;
-
-const depositsOf = (savingDeposits, period) =>
-    savingDeposits.filter((deposit) => isInPeriod(deposit.depositedAt, period));
 
 // null when there is nothing to compare with
 function toTrend(rate) {
@@ -28,21 +28,20 @@ function toTrend(rate) {
     return { direction: rate > 0 ? "up" : "down", rate };
 }
 
+// No budget and no transaction (whatever its status) for the period
 export function isDashboardEmpty(data) {
-    return data.budgets.length === 0 && data.expenses.length === 0 && data.incomes.length === 0;
+    return data.allocations.length === 0 && data.transactions.length === 0;
 }
 
-// The four key figures of the month
+// The four key figures of the month (completed transactions only)
 export function selectSummary(data, today) {
     const current = getMonthlySummary({
-        incomes: data.incomes,
-        expenses: data.expenses,
-        savingDeposits: depositsOf(data.savingDeposits, data.period),
+        transactions: data.transactions,
+        savingDeposits: getDepositsOfPeriod(data.savingDeposits, data.period),
     });
     const previous = getMonthlySummary({
-        incomes: data.previousIncomes,
-        expenses: data.previousExpenses,
-        savingDeposits: depositsOf(data.savingDeposits, data.previousPeriod),
+        transactions: data.previousTransactions,
+        savingDeposits: getDepositsOfPeriod(data.savingDeposits, data.previousPeriod),
     });
     const { totalPlanned } = getBudgetUsage(data);
     const remainingDays = getRemainingDaysInPeriod(data.period, today);
@@ -71,12 +70,6 @@ export function selectSummary(data, today) {
     };
 }
 
-function getUsageStatus(item) {
-    if (item.isOverBudget) return "over";
-    if (item.usageRate >= BUDGET_WARNING_RATE) return "warning";
-    return "ok";
-}
-
 // "Budget du mois": overall usage and one row per budgeted category
 export function selectBudgetOverview(data) {
     const usage = getBudgetUsage(data);
@@ -87,49 +80,36 @@ export function selectBudgetOverview(data) {
         usageRate: usage.usageRate,
         items: usage.items
             .filter((item) => item.planned > 0)
-            .map((item) => ({ ...item, status: getUsageStatus(item) })),
+            .map((item) => ({ ...item, status: getBudgetStatus(item) })),
     };
 }
 
 // Active goal with the nearest deadline; without any deadline, the most
 // advanced active goal; null when every goal is reached (or there is none).
 export function selectHighlightedGoal(savingGoals) {
-    const activeGoals = savingGoals.filter((goal) => !getGoalProgress(goal).isReached);
-    if (activeGoals.length === 0) return null;
+    const [nearestGoal] = getUpcomingGoals(savingGoals, 1);
+    const goal = nearestGoal ?? getSavingsOverview(savingGoals).mostAdvancedGoal;
 
-    const byDeadline = activeGoals
-        .filter((goal) => goal.deadline)
-        .sort((a, b) => Date.parse(a.deadline) - Date.parse(b.deadline));
-
-    const byProgress = [...activeGoals]
-        .sort((a, b) => getGoalProgress(b).rate - getGoalProgress(a).rate);
-
-    const goal = byDeadline[0] ?? byProgress[0];
-    return { goal, progress: getGoalProgress(goal) };
+    return goal ? { goal, progress: getGoalProgress(goal) } : null;
 }
 
-// Latest money movements of the period, most recent first
+// Latest money movements of the period, most recent first: completed
+// transactions and saving deposits (planned / cancelled ones are not movements)
 export function selectRecentActivity(data, today, limit = RECENT_ACTIVITY_LIMIT) {
     const categoryNames = new Map(data.categories.map((category) => [category.id, category.name]));
     const goalTitles = new Map(data.savingGoals.map((goal) => [goal.id, goal.title]));
 
     const activity = [
-        ...data.expenses.map((expense) => ({
-            key: `expense-${expense.id}`,
-            type: "expense",
-            label: expense.label,
-            categoryName: categoryNames.get(expense.categoryId),
-            amount: expense.amount,
-            date: expense.spentAt,
+        ...getCompletedTransactions(data.transactions).map((transaction) => ({
+            key: `transaction-${transaction.id}`,
+            type: transaction.type,
+            label: transaction.label,
+            // Only expenses show their category (budget categories)
+            categoryName: transaction.type === TRANSACTION_TYPES.EXPENSE ? categoryNames.get(transaction.categoryId) : undefined,
+            amount: transaction.amount,
+            date: transaction.date,
         })),
-        ...data.incomes.map((income) => ({
-            key: `income-${income.id}`,
-            type: "income",
-            label: income.label,
-            amount: income.amount,
-            date: income.receivedAt,
-        })),
-        ...depositsOf(data.savingDeposits, data.period).map((deposit) => ({
+        ...getDepositsOfPeriod(data.savingDeposits, data.period).map((deposit) => ({
             key: `deposit-${deposit.id}`,
             type: "deposit",
             label: goalTitles.get(deposit.savingGoalId),

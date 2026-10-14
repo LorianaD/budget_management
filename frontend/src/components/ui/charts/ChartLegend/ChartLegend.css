@@ -1,0 +1,36 @@
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.chart-legend__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+}
+
+/* Colour swatch, decorative: the label carries the information */
+.chart-legend__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chart-legend__label::before {
+    content: "";
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--legend-color);
+}
+
+.chart-legend__value {
+    font-weight: 600;
+    color: #1A202C;
+    white-space: nowrap;
+}

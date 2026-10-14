@@ -1,0 +1,32 @@
+.select-field {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.select-field__label {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Chip look (Figma filter chips): pill, light border, chevron drawn in CSS */
+.select-field__input {
+    appearance: none;
+    padding: 8px 34px 8px 14px;
+    border: 1px solid #E2E8F0;
+    border-radius: 100px;
+    background:
+        linear-gradient(45deg, transparent 50%, var(--grey) 50%) calc(100% - 18px) 55% / 5px 5px no-repeat,
+        linear-gradient(135deg, var(--grey) 50%, transparent 50%) calc(100% - 13px) 55% / 5px 5px no-repeat,
+        var(--white);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey);
+    cursor: pointer;
+}
+
+.select-field__input:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}

@@ -2,7 +2,6 @@
 // pages and hooks use the business services exported by @/services.
 export * as budgetApi from "./budgets";
 export * as categoryApi from "./categories";
-export * as expenseApi from "./expenses";
-export * as incomeApi from "./incomes";
 export * as savingGoalApi from "./savingGoals";
+export * as transactionApi from "./transactions";
 export * as userApi from "./users";

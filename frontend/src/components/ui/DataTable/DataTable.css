@@ -1,0 +1,84 @@
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #1A202C;
+}
+
+.data-table__cell {
+    padding: 16px 20px;
+    border-bottom: 1px solid #D9E2EC;
+    white-space: nowrap;
+}
+
+.data-table__cell--start { text-align: left; }
+.data-table__cell--end { text-align: right; }
+.data-table__cell--center { text-align: center; }
+
+.data-table thead .data-table__cell {
+    padding-block: 12px;
+    border-bottom: none;
+    background: #F5F7FA;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+.data-table__row-header {
+    font-weight: 500;
+}
+
+.data-table__footer .data-table__cell {
+    border-bottom: none;
+    font-weight: 700;
+}
+
+/* Each row becomes a block: row header on top, then one "label value" line per column */
+@media screen and (max-width: 600px) {
+    .data-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .data-table,
+    .data-table tbody,
+    .data-table tfoot,
+    .data-table tr,
+    .data-table__cell {
+        display: block;
+    }
+
+    .data-table tr {
+        padding: 12px 0;
+        border-bottom: 1px solid #D9E2EC;
+    }
+
+    .data-table__footer {
+        border-bottom: none;
+    }
+
+    .data-table__cell {
+        padding: 4px 0;
+        border: none;
+        white-space: normal;
+    }
+
+    td.data-table__cell {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-align: right;
+    }
+
+    td.data-table__cell::before {
+        content: attr(data-label);
+        font-weight: 400;
+        text-align: left;
+        color: var(--grey);
+    }
+}

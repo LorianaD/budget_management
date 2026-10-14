@@ -5,9 +5,10 @@
 // integer cents (Math.round(amount * 100)), which is exact for such values.
 //
 // DECIMAL strings are parsed digit by digit, never through floating point
-// ("1.005" would become 1.00499... as a float). Income.amount is DECIMAL(10, 3):
-// a non-zero third decimal cannot be represented, so it is rounded half away
-// from zero to the cent AND reported with console.warn — never dropped silently.
+// ("1.005" would become 1.00499... as a float). The current columns have a
+// scale of 2; should a value ever carry a non-zero third decimal, it is rounded
+// half away from zero to the cent AND reported with console.warn — never
+// dropped silently.
 
 const DECIMAL_PATTERN = /^(-?)(\d+)(?:\.(\d+))?$/;
 
@@ -15,7 +16,7 @@ function reportPrecisionLoss(field, value, rounded) {
     console.warn(`[mappers] ${field}: "${value}" has sub-cent precision, rounded to ${rounded}.`);
 }
 
-// "2150.000" -> 2150, "13.99" -> 13.99, "12.345" -> 12.35 (+ warning), null -> 0
+// "2150.00" -> 2150, "13.99" -> 13.99, "12.345" -> 12.35 (+ warning), null -> 0
 export function toAmount(value, field = "amount") {
     if (value === null || value === undefined) return 0;
 

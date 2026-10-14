@@ -9,9 +9,11 @@ import './Button.css';
 // so the button stays focusable, is announced as unavailable
 // and can explain why through disabledReason.
 //
+// ariaExpanded / ariaControls: disclosure buttons (button showing / hiding a block).
+//
 // icon: optional decorative icon, placed after the label
 // (iconPosition="start" places it before).
-function Button({ variant, label, type = "button", link, onClick, size = "default", disabled = false, disabledReason, ariaLabel, icon, iconPosition = "end" }) {
+function Button({ variant, label, type = "button", link, onClick, size = "default", disabled = false, disabledReason, ariaLabel, ariaExpanded, ariaControls, icon, iconPosition = "end" }) {
     const reasonId = useId();
     const className = `button button--${variant} button--${size}`;
 
@@ -62,6 +64,8 @@ function Button({ variant, label, type = "button", link, onClick, size = "defaul
             type={type}
             onClick={onClick}
             aria-label={ariaLabel}
+            aria-expanded={ariaExpanded}
+            aria-controls={ariaControls}
         >
             {content}
         </button>

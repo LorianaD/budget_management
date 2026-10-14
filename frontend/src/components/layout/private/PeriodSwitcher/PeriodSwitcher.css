@@ -1,0 +1,36 @@
+.period-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 4px;
+    border: 1px solid var(--blue);
+    border-radius: 99px;
+    background: var(--white);
+    color: var(--blue);
+}
+
+.period-switcher__current {
+    min-width: 104px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* 32px hit area around the 16px chevron */
+.period-switcher__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.period-switcher__button:hover {
+    background: var(--pale-blue);
+}

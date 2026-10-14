@@ -1,6 +1,9 @@
-// `type` is passed through untouched: its meaning is not defined by the backend yet
+// type: "income" | "expense" (TransactionType). isSystem: provided by the app.
 export const mapCategory = (dto) => ({
     id: dto.id,
     name: dto.name,
+    code: dto.code,
     type: dto.type,
+    isSystem: dto.isSystem,
+    parentId: dto.parent?.id ?? null,
 });

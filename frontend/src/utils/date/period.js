@@ -9,14 +9,19 @@ export function toPeriod(year, month) {
     return `${year}-${String(month).padStart(2, "0")}`;
 }
 
-// "2026-07" -> { year: 2026, month: "07" } (Budget entity format)
+// "2026-07" -> { year: 2026, month: 7 } (Budget entity format: two integers)
 export function getPeriodParts(period) {
     const [year, month] = period.split("-");
-    return { year: Number(year), month };
+    return { year: Number(year), month: Number(month) };
 }
 
 export function getPeriodOf(isoDate) {
     return isoDate.slice(0, 7);
+}
+
+// "2026-07-12T11:15:00+02:00" -> 12
+export function getDayOfMonth(isoDate) {
+    return Number(isoDate.slice(8, 10));
 }
 
 export function isInPeriod(isoDate, period) {
@@ -47,8 +52,24 @@ export function getRemainingDaysInPeriod(period, todayIso) {
     if (period < todayPeriod) return 0;
     if (period > todayPeriod) return getDaysInPeriod(period);
 
-    const today = Number(todayIso.slice(8, 10));
+    const today = getDayOfMonth(todayIso);
     return getDaysInPeriod(period) - today + 1;
+}
+
+// "2026-07-12T11:15:00+02:00" -> "2026-07-12" (calendar day, see the note above)
+export function getIsoDay(isoDate) {
+    return isoDate.slice(0, 10);
+}
+
+// Monday-to-Sunday week containing the given date: { start, end } as "YYYY-MM-DD"
+export function getWeekBounds(isoDate) {
+    const day = new Date(`${getIsoDay(isoDate)}T00:00:00Z`);
+    const mondayOffset = (day.getUTCDay() + 6) % 7;
+    const start = new Date(day);
+    start.setUTCDate(day.getUTCDate() - mondayOffset);
+    const end = new Date(start);
+    end.setUTCDate(start.getUTCDate() + 6);
+    return { start: start.toISOString().slice(0, 10), end: end.toISOString().slice(0, 10) };
 }
 
 // Sort comparator, most recent first

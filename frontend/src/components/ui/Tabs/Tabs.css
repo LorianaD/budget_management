@@ -1,0 +1,36 @@
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.tabs__list {
+    display: flex;
+    gap: 32px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+/* Underline of the active tab: 3px blue bar (Figma) */
+.tabs__tab {
+    padding: 0 0 12px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    background: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--grey);
+    cursor: pointer;
+}
+
+.tabs__tab--active {
+    border-bottom-color: var(--blue);
+    color: var(--blue);
+}
+
+.tabs__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

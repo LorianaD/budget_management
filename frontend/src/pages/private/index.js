@@ -1,1 +1,6 @@
 export * from './Dashboard'
+export * from './Budget'
+export * from './Expenses'
+export * from './SavingGoals'
+export * from './Methods'
+export * from './MyAids'

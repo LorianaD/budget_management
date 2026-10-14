@@ -25,6 +25,12 @@ const monthYearFormatter = new Intl.DateTimeFormat(LOCALE, {
     timeZone: "UTC",
 });
 
+const dayMonthFormatter = new Intl.DateTimeFormat(LOCALE, {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+});
+
 const timeFormatter = new Intl.DateTimeFormat(LOCALE, {
     hour: "2-digit",
     minute: "2-digit",
@@ -65,6 +71,12 @@ export function formatHour(isoDate) {
 export function formatPeriod(period) {
     const { year, month } = getPeriodParts(period);
     return capitalize(monthYearFormatter.format(new Date(Date.UTC(year, Number(month) - 1, 1))));
+}
+
+// ("2026-07", 5) -> "5 juillet"
+export function formatDayOfPeriod(period, day) {
+    const { year, month } = getPeriodParts(period);
+    return dayMonthFormatter.format(new Date(Date.UTC(year, Number(month) - 1, day)));
 }
 
 // Deadline "2026-12-31T00:00:00+01:00" -> "Décembre 2026"

@@ -38,7 +38,7 @@ const LinksData = {
         path: "/register",
     },
 
-    // Private area (only the dashboard page exists for now)
+    // Private area (dashboard, budget and transactions pages exist for now)
     dashboard: {
         key: "dashboard",
         label: "Tableau de bord",
@@ -112,6 +112,21 @@ const LinksData = {
         key: "servicePublic",
         label: "Service Public",
         href: "https://www.service-public.gouv.fr",
+    },
+    ameli: {
+        key: "ameli",
+        label: "Assurance Maladie",
+        href: "https://www.ameli.fr",
+    },
+    studentLife: {
+        key: "studentLife",
+        label: "Étudiant.gouv",
+        href: "https://www.etudiant.gouv.fr",
+    },
+    retirement: {
+        key: "retirement",
+        label: "Info Retraite",
+        href: "https://www.info-retraite.fr",
     },
 
     // Legal pages

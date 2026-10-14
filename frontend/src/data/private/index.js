@@ -2,3 +2,5 @@
 // The fictional mocks (./mocks) are intentionally NOT re-exported: only
 // src/services may read them.
 export { default as CategoryAppearanceData, getCategoryAppearance } from "./CategoryAppearanceData";
+export { default as BudgetStatusAppearanceData, getBudgetStatusAppearance } from "./BudgetStatusAppearanceData";
+export { default as SuggestedAidsData } from "./SuggestedAidsData";

@@ -1,7 +1,7 @@
 
 import { check, piggyBank, ToolsHeroImg, search, target, shield, piggyBankViolet, info, alert, checkCircle, calendar, logement, famille } from "@/assets";
 import { ToolsInterpretationImg } from "@/assets/images/tools";
-import { LinksData } from "@/data";
+import { BudgetSplitData, LinksData } from "@/data";
 
 const ToolsData = {
     hero: {
@@ -69,26 +69,8 @@ const ToolsData = {
             currency: "EUR",
         },
 
-        allocations: [
-            {
-                key: "needs",
-                label: "Besoins essentiels",
-                percentage: 50,
-                color: "#1565C0",
-            },
-            {
-                key: "wants",
-                label: "Envies",
-                percentage: 30,
-                color: "#F57C00",
-            },
-            {
-                key: "savings",
-                label: "Épargne",
-                percentage: 20,
-                color: "#2E7D32",
-            },
-        ],
+        // Shared with the private methods simulator
+        allocations: BudgetSplitData.fiftyThirtyTwenty.allocations,
 
         methodLabel: "Méthode appliquée : 50/30/20",
         chartLabel: "50/30/20",

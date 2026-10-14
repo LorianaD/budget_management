@@ -3,18 +3,21 @@ import { Avatar } from '../Avatar';
 import './TestimonialCard.css';
 
 // Témoignage : note en étoiles, citation et auteur.
-// item = { key, rating, quote, author: { initials, name, profile }, tone?, variant? }
+// item = { key, rating?, quote, author: { initials, name, profile }, tone?, variant? }
+// Without rating, no stars are shown.
 function TestimonialCard({ item }) {
-    const stars = Array.from({ length: item.rating }, (_, index) => index);
+    const stars = Array.from({ length: item.rating ?? 0 }, (_, index) => index);
 
     return (
         <figure className={`testimonial-card testimonial-card--${item.variant ?? "default"}`}>
-            <div className="testimonial-card__rating">
-                {stars.map((index) => (
-                    <img key={index} src={star} alt="" className="testimonial-card__star" />
-                ))}
-                <span className="visually-hidden">Note : {item.rating} sur 5</span>
-            </div>
+            {item.rating > 0 && (
+                <div className="testimonial-card__rating">
+                    {stars.map((index) => (
+                        <img key={index} src={star} alt="" className="testimonial-card__star" />
+                    ))}
+                    <span className="visually-hidden">Note : {item.rating} sur 5</span>
+                </div>
+            )}
 
             <blockquote className="testimonial-card__quote">
                 <p>{item.quote}</p>

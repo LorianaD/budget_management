@@ -1,5 +1,6 @@
+import { demoContext } from "@/data/private/mocks";
 import { savingGoalApi } from "@/services/api";
-import { runWrite, selectSource } from "@/services/config";
+import { isMockMode, runWrite, selectSource } from "@/services/config";
 import { mapSavingDeposit, mapSavingGoal, toSavingGoalPayload } from "@/services/mappers";
 import { savingGoalMock } from "@/services/mocks";
 
@@ -16,10 +17,26 @@ export async function getSavingGoal(id, options) {
     return goal ? mapSavingGoal(goal) : null;
 }
 
-// FUTURE EXTENSION — no backend entity: always read from the mocks, whatever the data source
+// FUTURE EXTENSION — the deposit history has no backend entity: it only exists
+// with the demo data. With the API it is unavailable, so fictional deposits are
+// never mixed with real goals.
+export function isSavingHistoryAvailable() {
+    return isMockMode;
+}
+
+// Deposits of every goal, or null when the history is unavailable (API mode)
 export async function getSavingDeposits(options) {
+    if (!isSavingHistoryAvailable()) return null;
+
     const deposits = await savingGoalMock.getSavingDeposits(options);
     return deposits.map(mapSavingDeposit);
+}
+
+// Id of the goal used as the safety fund, or null when none is identified.
+// Demo configuration only: the backend has no way to flag this goal yet,
+// so the API mode returns null until Symfony provides one.
+export function getSafetyFundGoalId() {
+    return isMockMode ? demoContext.safetyFundGoalId : null;
 }
 
 // Writes always target the API and are refused in mock mode (see runWrite)

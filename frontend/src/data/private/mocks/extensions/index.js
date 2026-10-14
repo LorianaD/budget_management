@@ -9,6 +9,6 @@
 //   ManyToOne SavingGoal).
 // - recurringTransactions: recurring expenses (rent, subscriptions...).
 //   Proposed entity: RecurringTransaction (label, amount, frequency,
-//   ManyToOne Category, ManyToOne User).
+//   ManyToOne Category, ManyToOne User), generating planned Transactions.
 export { savingDeposits } from "./savingDeposits";
 export { recurringTransactions } from "./recurringTransactions";
