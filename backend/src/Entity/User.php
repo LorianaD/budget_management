@@ -7,12 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'Cette adresse email est déjà utilisée.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     // ========================================
@@ -34,10 +36,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(max: 255)]
     private ?string $lastname = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTime $birthDate = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotNull]
+    #[Assert\LessThan('today')]
+    private ?\DateTimeImmutable $birthDate = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
     private ?string $job = null;
 
     // ========================================
@@ -134,12 +140,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBirthDate(): ?\DateTime
+    public function getBirthDate(): ?\DateTimeImmutable
     {
         return $this->birthDate;
     }
 
-    public function setBirthDate(\DateTime $birthDate): static
+    public function setBirthDate(\DateTimeImmutable $birthDate): static
     {
         $this->birthDate = $birthDate;
 

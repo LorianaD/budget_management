@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Budget;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,28 +17,54 @@ class BudgetRepository extends ServiceEntityRepository
         parent::__construct($registry, Budget::class);
     }
 
-    //    /**
-    //     * @return Budget[] Returns an array of Budget objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('b.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+    * @return Budget[]
+    */
+    public function findAllBudgetByUser(User $user): array
+    {
+        return $this->createQueryBuilder('b')
+            ->leftJoin('b.budgetAllocations', 'ba')
+            ->addSelect('ba')
+            ->where('b.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 
-    //    public function findOneBySomeField($value): ?Budget
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findBudgetsByUserAndYear(User $user, int $year): array
+    {
+        return $this->createQueryBuilder('b')
+            ->where('b.user = :user')
+            ->andWhere('b.year = :year')
+            ->setParameter('user', $user)
+            ->setParameter('year', $year)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findOneByUserAndPeriod(User $user, int $year, int $month): ?Budget
+    {
+        return $this->createQueryBuilder('b')
+            ->where('b.user = :user')
+            ->andWhere('b.year = :year')
+            ->andWhere('b.month = :month')
+            ->setParameter('user', $user)
+            ->setParameter('year', $year)
+            ->setParameter('month', $month)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function findOneByIdAndUser(int $id, User $user): ?Budget
+    {
+        return $this->createQueryBuilder('b')
+            ->leftJoin('b.budgetAllocations', 'ba')
+            ->addSelect('ba')
+            ->where('b.id = :id')
+            ->andWhere('b.user = :user')
+            ->setParameter('id', $id)
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
